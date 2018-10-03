@@ -1,0 +1,24 @@
+---TUTO POUR PRINCESSE MIKA---
+
+1/ Installer Git for windows :
+https://gitforwindows.org/
+
+Use Vim / Use Git from Git Bash Only / et après le reste ça doit être bon
+
+2/ Code Git:
+
+Pour aller dans son répertoire : cd ... / ...
+Clonage : git clone https://gitlab.com/PoleTactique/projecttahiti.git
+
+Pour savoir sur quelle branche on est : git status
+Pour connaître toutes les branches git branch
+Pour créer une nouvelle branche : git checkout -b gael/newfeature
+Pour aller sur une autre branche : git checkout NomDeLaBranche
+
+Pour ajouter un fichier : l'enregistrer avant
+Se connecter : 
+	git config --global user.email "you@example.com"
+  	git config --global user.name "Your Name"
+Pour ajouter un fichier git add NomFichier
+Pour commit : git commit -m"Ceci est un test pour mika"
+Et enfin : git push --set-upstream origin gael/newfeature
