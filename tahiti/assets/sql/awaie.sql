@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 07 oct. 2018 à 13:01
+-- Généré le :  Dim 07 oct. 2018 à 18:32
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -419,20 +419,23 @@ INSERT INTO `members` (`member_id`, `name`, `email`, `password`, `isOnline`, `id
 
 DROP TABLE IF EXISTS `produits`;
 CREATE TABLE IF NOT EXISTS `produits` (
-  `ref_produit` int(11) NOT NULL AUTO_INCREMENT,
+  `id_produit` int(11) NOT NULL AUTO_INCREMENT,
+  `ref_produit` text COLLATE utf8_unicode_ci NOT NULL,
   `GPS_lat` float NOT NULL,
   `GPS_long` float NOT NULL,
   `id_entreprise` int(11) NOT NULL,
-  PRIMARY KEY (`ref_produit`),
+  PRIMARY KEY (`id_produit`),
   KEY `id_entreprise` (`id_entreprise`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `produits`
 --
 
-INSERT INTO `produits` (`ref_produit`, `GPS_lat`, `GPS_long`, `id_entreprise`) VALUES
-(1, 47.5847, 1.32585, 1);
+INSERT INTO `produits` (`id_produit`, `ref_produit`, `GPS_lat`, `GPS_long`, `id_entreprise`) VALUES
+(1, 'INSA_1', 47.5847, 1.32585, 1),
+(2, 'INSA_2', 47.5845, 1.32552, 1),
+(3, 'INSA_3', 47.5852, 1.3252, 1);
 
 --
 -- Contraintes pour les tables déchargées
@@ -442,13 +445,13 @@ INSERT INTO `produits` (`ref_produit`, `GPS_lat`, `GPS_long`, `id_entreprise`) V
 -- Contraintes pour la table `alertes`
 --
 ALTER TABLE `alertes`
-  ADD CONSTRAINT `alertes_ibfk_1` FOREIGN KEY (`sonde_id`) REFERENCES `produits` (`ref_produit`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `alertes_ibfk_1` FOREIGN KEY (`sonde_id`) REFERENCES `produits` (`id_produit`) ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `capteur`
 --
 ALTER TABLE `capteur`
-  ADD CONSTRAINT `capteur_ibfk_1` FOREIGN KEY (`sonde_id`) REFERENCES `produits` (`ref_produit`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `capteur_ibfk_1` FOREIGN KEY (`sonde_id`) REFERENCES `produits` (`id_produit`) ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `members`
