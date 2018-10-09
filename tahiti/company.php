@@ -75,28 +75,97 @@
         *********************************************************************************************************************************************************** -->
         <!--main content start-->
         <section id="main-content">
-            <section class="wrapper site-min-height">
-                <h3><i class="fa fa-angle-right"></i> Company Page</h3>
-                <div class="row mt">
-                    <div class="col-md-4 mt" style="height:500px;">
-                        <div class="content-panel">
-                            <h4>Alerts</h4>
-                            <p>All company alerts here</p>
+            <section class="wrapper">
+                <div class="row">
+                    <div class="col-lg-9 main-chart">                  
+                            <!--loop display graph of all company's sensors -->
+                            <!-- CHOICE 2 -->
+                                <?php
+                                    for($i=0; $i < count($ref_id); $i++) {
+                                        $sql_get_temp_graph2 = "SELECT temperature,date FROM capteur JOIN produits WHERE capteur.sonde_id=produits.id_produit AND produits.ref_produit='".$ref_id[$i]."' ORDER BY capteur.date DESC LIMIT 12";
+                                        $result = mysqli_query($sqlconnect, $sql_get_temp_graph2);
+                                        $donnees_temp = [];
+                                        $donnees_date = [];
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $donnees_temp[] = $row['temperature'];
+                                            $donnees_date[] = $row['date'];
+                                        }
+                                ?>
+                                        <!-- WEATHER-4 PANEL -->
+                                        <div class="col-lg-4 col-md-4 col-sm-4 mb" style="position: relative;">
+                                            <a href="capteurs_temp.php?sonde=<?php echo $ref_id[$i];?>">
+                                            <div class="weather-4 pn centered">
+                                                <i class="fa fa-thermometer-half"></i>
+                                                <?php if(isset($donnees_temp[0])){echo "<h1>".$donnees_temp[0]." °C</h1>";}?>
+                                                    <div class="row">
+                                                            <?php echo "<h3 class='centered'>".$ref_id[$i]."</h3>";?>
+                                                            <?php if(isset($donnees_temp[0])){echo "<p class='centered'>".$donnees_date[0]."</p>";}?>
+                                                    </div>
+                                            </div>
+                                            
+                                            <div class="darkblue-panel pn centered" style="position: absolute; top:0px; left:15px; right:15px; height: 100%; opacity: 0.2;">
+                                                <div class="chart mt" style="position: absolute; left:0px; top: 25%;">
+                                <script>
+                                    var t = <?php echo json_encode($donnees_temp);?>;
+                                    t = t.reverse();
+                                </script>
+                                                    <div id=<?php echo $ref_id[$i]."graph"; ?> class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4">
+                                                    </div>
+                                <script>
+                                    document.getElementById("<?php echo $ref_id[$i].'graph';?>").setAttribute("data-data", "[" + t + "]");
+                                </script>
+                                                </div>
+                                            </div>
+                                            </a>
+                                        </div><!-- /col-md-4 -->
+
+                                <?php
+                                    }
+                                ?>
+                    </div>
+    <!-- **********************************************************************************************************************************************************
+        RIGHT SIDEBAR CONTENT
+        *********************************************************************************************************************************************************** -->                  
+                    
+                    <div class="col-lg-3 ds">
+                        <h3>Alerts</h3>
+                        <div class="desc">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Sonde</th>
+                                        <th>Date</th>
+                                        <th>Temp</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        $sql_get_temp = "SELECT * FROM alertes JOIN produits, entreprise WHERE alertes.sonde_id=produits.id_produit AND produits.id_entreprise=entreprise.company_id AND entreprise.company_id=$company_id ORDER BY time DESC LIMIT 10";
+                                        $result = mysqli_query($sqlconnect, $sql_get_temp);
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            echo "<tr>";
+                                            echo "<td><a href='capteurs_temp.php?sonde=".$row['ref_produit']."'>".$row['ref_produit']."</a></td>";
+                                            echo "<td>".$row['time']."</td>";
+                                            echo "<td>".$row['temp']."</td>";
+                                            echo "</tr>";
+                                        }
+                                    ?>
+                                </tbody>
+                            </table>                        
                         </div>
                         
-                    </div>
-                    
-                    <div class="col-md-8 mt">
-                        <div class="content-panel" style="height:500px;">
-                            <div id="mapid" style="width: 100%; height: 100%;">
+                        <h3>Map</h3>
+                        <div class="desc">
+                            <div class="content-panel" style="height:300px;">
+                                <div id="mapid" style="width: 100%; height: 100%;">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-            </section><!-- /wrapper -->
-        </section><!-- /MAIN CONTENT -->
-
+                        
+                    </div><!-- /col-lg-3 -->
+                </div><!--/row -->
+            </section>
+        </section>
         <!--main content end-->
         <!--footer-->
         <?php
@@ -112,6 +181,7 @@
         <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+        <script src="assets/js/jquery.sparkline.js"></script>
 
 
         <!--common script for all pages-->
@@ -119,6 +189,7 @@
 
         <!--script for this page-->
         <script src="assets/js/leaflet/leaflet.js"></script>
+        <script src="assets/js/sparkline-chart.js"></script>
 
     <script>
         //custom select box
@@ -137,7 +208,6 @@
         }
 
         //Map
-
         var gps_lat = <?php echo json_encode($gps_lat); ?>;
         var gps_long = <?php echo json_encode($gps_long); ?>;
         var ref_id = <?php echo json_encode($ref_id); ?>;
@@ -158,7 +228,7 @@
             var length = gps_lat.length;
             var group = new L.featureGroup();
             for (var i = 0; i < length; i++) {
-                var marker = L.marker([gps_lat[i], gps_long[i]]).addTo(mymap).bindPopup("<p><b>" + ref_id[i] + "</b></p>" + gps_lat[i] + " / " + gps_long[i]);
+                var marker = L.marker([gps_lat[i], gps_long[i]]).addTo(mymap).bindPopup("<p><a href='capteurs_temp.php?sonde="+ref_id[i]+"'><b>" + ref_id[i] + "</b></a></p>" + gps_lat[i] + " / " + gps_long[i]);
                 group.addLayer(marker);
             }
             mymap.fitBounds(group.getBounds());
