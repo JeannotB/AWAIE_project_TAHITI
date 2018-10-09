@@ -1,0 +1,30 @@
+~~~~Page d'accueil
+
+Bienvenue chez TAHITI
+
+TAHITI est une entreprise gérant des milliers de capteurs pour de nombreux clients à travers le monde. Fondée par 5 élèves ingénieurs de l'INSA Centre Val de Loire (Blois), elle permet à chaque partenaire de suivre ses capteurs, de réaliser une supervision grâce à son application fonctionnelle et à l'alerter en cas de problème.
+
+
+
+~~~~Nos membres
+
+Dirigeant : Baptiste CHEVALLIER
+"Il est sûr que Baptiste CHEVALLIER est sûrement le plus beau, le plus grand, le plus fort dirigeant de ce monde après Mickey Mouse". Cette citation n'est pas de nous mais bien de Xavier NIEL, le lendemain de la création de TAHITI.
+Baptiste a entamé son chemin vers la gloire en inventant les tongs connectés (permettant de savoir si l'utilisateur a besoin de se doucher). Cette prouesse technique a reçu par la suite le soutien de Nike, qui a choisi de connecter tous ses vêtements. Ainsi, il a pu découvrir le fabuleux monde des capteurs et a décidé alors d'en faire son fer de lance. Pour lui, le monde se devait d'être connecté pour que l'Homme n'ait plus besoin de se développer et reste devant son ordinateur. Ce n'est que lorsque chaque personne n'aura plus la nécessité de se déplacer qu'il dira que son entreprise a été un franc succès.
+<a href="mailto:baptiste.chevallier@insa-cvl.fr">Envoyez un mail à Baptiste</a>
+
+
+Responsable tactique : Stéphane HOSIK
+Stéphane est le maître créateur de TAHITI. Elevé par des pandas ninjas, il idôlatre les Cinq Cyclones, cinq combattants de Kung Fu qui protègent la vallée de la Paiw. Son rêve était alors de devenir un guerrier aussi incroyable qu'eux en dépit de sa carrure.
+Mais ensuite il a su par son sourire légendaire et sa réflexion fabuleuse trouver toujours plus de choses à réaliser dans le monde de la technologie, du sport et de la menuiserie maya.
+Actions notables : vainqueur de Hackatons, youtubeur (sa vidéo sponsorisée "Git pour les Nuls" a déjà fait 3 vues)
+<a href="mailto:stephane.ho_sik_chuen@insa-cvl.fr">Envoyez un mail à Stéphane</a>
+
+Responsable international : Thomas GOWARD
+Thomas a très tôt été recruté par les services secrets brittaniques pour ses habilités au tir à l'arc et sa capacité de concentration digne d'un champion du monde d'échecs. Il avait été alors envoyé pour surveiller les joyaux de la Couronne. Il avait d'ailleurs été envoyé pour surveiller les joyaux lors d'une exposition mais quelqu'un avait arrivé à déjouer tous les systèmes de sécurité et à voler les bijoux. Il décide d'enquêter sur un français, choisi au hasard, malgré la désapprobation du MI7.
+Dès lors il a été renvoyé, puis a fait carrière dans la technologie radioactive des propulseurs de pommes de terre. Depuis maintenant 7 ans, il est le responsable international de notre firme créée en 2018.
+<a href="mailto:thomas.goward@insa-cvl.fr">Envoyez un mail à Thomas</a>
+
+Responsable robotique : Mickaël PETIT
+
+<a href="mailto:mickael.petit@insa-cvl.fr">Envoyez un mail à Mickaël</a>
