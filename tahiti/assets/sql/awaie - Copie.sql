@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 11 oct. 2018 à 15:08
+-- Généré le :  jeu. 11 oct. 2018 à 15:22
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `awaie`
 --
-CREATE DATABASE IF NOT EXISTS `awaie` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `awaie`;
 
 -- --------------------------------------------------------
 

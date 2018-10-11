@@ -56,11 +56,6 @@
 						<button class="btn btn-theme btn-block" href="basic.php" type="submit" name="Register" value="Register"><i class="fa fa-lock"></i> Register</button>
 						<hr>
 						
-						<div class="login-social-link centered">
-						<p>or you can register via your social network</p>
-							<button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
-							<button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
-						</div>
 						<div class="registration">
 							You have an account ?<br/>
 							<a class="" href="index.php">

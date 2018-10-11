@@ -37,8 +37,7 @@
 				$error = "Error: " . $sql . " " . mysqli_error($sqlconnect);
 
 
-
-			header('Location: basic.php');
+			header('Location: dashboard.php');
 		}
 		else
 		{

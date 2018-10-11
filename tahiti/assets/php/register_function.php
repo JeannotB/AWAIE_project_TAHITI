@@ -105,7 +105,7 @@
                 {
                     $error = "Successfully register";
                     
-                    header('Location: basic.php');
+                    header('Location: dashboard.php');
                 }
 				else
 					$error = "Error: " . $sql . "" . mysqli_error($sqlconnect);
