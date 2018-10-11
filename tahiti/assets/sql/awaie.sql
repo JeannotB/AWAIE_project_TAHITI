@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 07 oct. 2018 à 18:32
+-- Généré le :  mar. 09 oct. 2018 à 16:51
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -36,7 +36,14 @@ CREATE TABLE IF NOT EXISTS `alertes` (
   `sonde_id` int(11) NOT NULL,
   PRIMARY KEY (`alert_id`),
   KEY `sonde_id` (`sonde_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `alertes`
+--
+
+INSERT INTO `alertes` (`alert_id`, `time`, `temp`, `sonde_id`) VALUES
+(1, '2018-10-07 22:00:00', 25, 3);
 
 -- --------------------------------------------------------
 
@@ -52,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `capteur` (
   `temperature` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `sonde_id` (`sonde_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=290 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=291 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `capteur`
@@ -347,7 +354,8 @@ INSERT INTO `capteur` (`id`, `sonde_id`, `date`, `temperature`) VALUES
 (286, 1, '2018-10-05 21:44:59', 18),
 (287, 1, '2018-10-05 21:49:59', 30),
 (288, 1, '2018-10-05 21:54:59', 18),
-(289, 1, '2018-10-05 21:59:59', 22);
+(289, 1, '2018-10-05 21:59:59', 22),
+(290, 3, '2018-10-07 22:00:00', 25);
 
 --
 -- Déclencheurs `capteur`
@@ -400,16 +408,17 @@ CREATE TABLE IF NOT EXISTS `members` (
   `password` text COLLATE utf8_unicode_ci NOT NULL,
   `isOnline` tinyint(2) NOT NULL COMMENT '0: offline / 1:online / 2:busy',
   `id_company` int(11) NOT NULL,
+  `admin` tinyint(1) NOT NULL COMMENT '0 : not an admin / 1 : admin',
   PRIMARY KEY (`member_id`),
   KEY `id_company` (`id_company`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `members`
 --
 
-INSERT INTO `members` (`member_id`, `name`, `email`, `password`, `isOnline`, `id_company`) VALUES
-(3, 'a', 'a', '0cc175b9c0f1b6a831c399e269772661', 1, 1);
+INSERT INTO `members` (`member_id`, `name`, `email`, `password`, `isOnline`, `id_company`, `admin`) VALUES
+(3, 'a', 'a', '0cc175b9c0f1b6a831c399e269772661', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -421,8 +430,8 @@ DROP TABLE IF EXISTS `produits`;
 CREATE TABLE IF NOT EXISTS `produits` (
   `id_produit` int(11) NOT NULL AUTO_INCREMENT,
   `ref_produit` text COLLATE utf8_unicode_ci NOT NULL,
-  `GPS_lat` float NOT NULL,
-  `GPS_long` float NOT NULL,
+  `GPS_lat` double NOT NULL,
+  `GPS_long` double NOT NULL,
   `id_entreprise` int(11) NOT NULL,
   PRIMARY KEY (`id_produit`),
   KEY `id_entreprise` (`id_entreprise`)
@@ -433,9 +442,9 @@ CREATE TABLE IF NOT EXISTS `produits` (
 --
 
 INSERT INTO `produits` (`id_produit`, `ref_produit`, `GPS_lat`, `GPS_long`, `id_entreprise`) VALUES
-(1, 'INSA_1', 47.5847, 1.32585, 1),
-(2, 'INSA_2', 47.5845, 1.32552, 1),
-(3, 'INSA_3', 47.5852, 1.3252, 1);
+(1, 'INSA_1', 47.58470153808594, 1.325850009918213, 1),
+(2, 'INSA_2', 47.584537506103516, 1.3255150318145752, 1),
+(3, 'INSA_3', 47.58516311645508, 1.3252040147781372, 1);
 
 --
 -- Contraintes pour les tables déchargées
