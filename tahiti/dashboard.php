@@ -18,10 +18,8 @@
     while ($row = mysqli_fetch_assoc($result)) {
         $gps_lat[] = $row['GPS_lat'];
         $gps_long[] = $row['GPS_long'];
-        $ref_id[] = $row['ref_produit'];
+        $ref_id[] = md5($row['ref_produit']);
     }
-
-
 
 ?>
 
@@ -85,13 +83,15 @@
                             <!-- CHOICE 2 -->
                                 <?php
                                     for($i=0; $i < count($ref_id); $i++) {
-                                        $sql_get_temp_graph2 = "SELECT temperature,date FROM capteur JOIN produits WHERE capteur.sonde_id=produits.id_produit AND produits.ref_produit='".$ref_id[$i]."' ORDER BY capteur.date DESC LIMIT 12";
+                                        $sql_get_temp_graph2 = "SELECT temperature,date,ref_produit FROM capteur JOIN produits WHERE capteur.sonde_id=produits.id_produit AND md5(produits.ref_produit)='".$ref_id[$i]."' ORDER BY capteur.date DESC LIMIT 12";
                                         $result = mysqli_query($sqlconnect, $sql_get_temp_graph2);
                                         $donnees_temp = [];
                                         $donnees_date = [];
+                                        $sensor_name= [];
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             $donnees_temp[] = $row['temperature'];
                                             $donnees_date[] = $row['date'];
+                                            $sensor_name[] = $row['ref_produit'];
                                         }
                                 ?>
                                         <!-- WEATHER-4 PANEL -->
@@ -101,7 +101,7 @@
                                                 <i class="fa fa-thermometer-half"></i>
                                                 <?php if(isset($donnees_temp[0])){echo "<h1>".$donnees_temp[0]." °C</h1>";}?>
                                                     <div class="row">
-                                                            <?php echo "<h3 class='centered'>".$ref_id[$i]."</h3>";?>
+                                                            <?php echo "<h3 class='centered'>".$sensor_name[0]."</h3>";?>
                                                             <?php if(isset($donnees_temp[0])){echo "<p class='centered'>".$donnees_date[0]."</p>";}?>
                                                     </div>
                                             </div>
@@ -131,7 +131,7 @@
         *********************************************************************************************************************************************************** -->                  
                     
                     <div class="col-lg-3 ds">
-                        <h3>Alerts</h3>
+                        <h3>Alertes</h3>
                         <div class="desc">
                             <table class="table table-hover">
                                 <thead>
@@ -143,11 +143,11 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $sql_get_temp = "SELECT * FROM alertes JOIN produits, entreprise WHERE alertes.sonde_id=produits.id_produit AND produits.id_entreprise=entreprise.company_id AND entreprise.company_id=$company_id ORDER BY time DESC LIMIT 10";
+                                        $sql_get_temp = "SELECT * FROM alertes JOIN produits, entreprise WHERE alertes.sonde_id=produits.id_produit AND produits.id_entreprise=entreprise.company_id AND entreprise.company_id=$company_id AND alertes.is_display=1 ORDER BY time DESC LIMIT 5";
                                         $result = mysqli_query($sqlconnect, $sql_get_temp);
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             echo "<tr>";
-                                            echo "<td><a href='capteurs_temp.php?sonde=".$row['ref_produit']."'>".$row['ref_produit']."</a></td>";
+                                            echo "<td><a href='capteurs_temp.php?sonde=".md5($row['ref_produit'])."'>".$row['ref_produit']."</a></td>";
                                             echo "<td>".$row['time']."</td>";
                                             echo "<td>".$row['temp']."</td>";
                                             echo "</tr>";
@@ -157,7 +157,7 @@
                             </table>                        
                         </div>
                         
-                        <h3>Map</h3>
+                        <h3>Carte</h3>
                         <div class="desc">
                             <div class="content-panel" style="height:300px;">
                                 <div id="mapid" style="width: 100%; height: 100%;">

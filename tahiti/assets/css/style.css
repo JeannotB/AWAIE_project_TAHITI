@@ -779,8 +779,8 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 	color: #ffffff;
 	font-size: 16px;
 	padding: 0 10px;
-	line-height: 60px;
-	height: 60px;
+	line-height: 40px;
+	height: 40px;
 	margin: 0;
 	background: #ff865c;
 	text-align: center;
@@ -794,7 +794,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .ds .desc {
 	border-bottom: 1px solid #eaeaea;
 	display: inline-block;
-	padding: 15px 0;
+	padding: 5px 0;
 	width: 100%;
 }
 

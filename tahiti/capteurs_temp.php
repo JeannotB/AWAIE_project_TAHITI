@@ -10,11 +10,12 @@
         $sonde = null;
 
     //Get GPS
-    $sql_get_gps = "SELECT * FROM produits WHERE ref_produit='".$sonde."'";
+    $sql_get_gps = "SELECT * FROM produits WHERE md5(ref_produit)='".$sonde."'";
     $result = mysqli_query($sqlconnect, $sql_get_gps);
     while ($row = mysqli_fetch_assoc($result)) {
         $gps_lat = $row['GPS_lat'];
         $gps_long = $row['GPS_long'];
+        $sonde_name = $row['ref_produit'];
     }
 
 ?>
@@ -75,7 +76,8 @@
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper site-min-height">
-                <h3><i class="fa fa-map-marker"></i> Capteur de la sonde <?php echo $sonde;?></h3>
+                <h3><i class="fa fa-map-marker"></i> Capteur de la sonde <?php echo $sonde_name;?></h3>
+                <p><a href="assets/php/excel_file.php?sonde=<?php echo $sonde;?>&filename=<?php echo $sonde_name;?>">[Download Temperature]</a></p>
                 <div class="row mt">
                     <div class="col-md-4 mt">
                         <div class="content-panel" style="height: 395.083px;">
@@ -109,7 +111,7 @@
                                     <?php
                                         if($sonde <> null)
                                         {
-                                            $sql_get_temp = "SELECT * FROM capteur JOIN produits WHERE capteur.sonde_id=produits.id_produit AND produits.ref_produit='".$sonde."' ORDER BY capteur.date DESC";
+                                            $sql_get_temp = "SELECT * FROM capteur JOIN produits WHERE capteur.sonde_id=produits.id_produit AND md5(produits.ref_produit)='".$sonde."' ORDER BY capteur.date DESC";
                                             $result = mysqli_query($sqlconnect, $sql_get_temp);
                                             $temp = [];
                                             $date = [];

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 09 oct. 2018 à 16:51
+-- Généré le :  jeu. 11 oct. 2018 à 15:08
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `awaie`
 --
+CREATE DATABASE IF NOT EXISTS `awaie` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `awaie`;
 
 -- --------------------------------------------------------
 
@@ -34,16 +36,158 @@ CREATE TABLE IF NOT EXISTS `alertes` (
   `time` timestamp NOT NULL,
   `temp` float NOT NULL,
   `sonde_id` int(11) NOT NULL,
+  `is_display` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0 : not displayed / 1 : displayed',
   PRIMARY KEY (`alert_id`),
   KEY `sonde_id` (`sonde_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `alertes`
 --
 
-INSERT INTO `alertes` (`alert_id`, `time`, `temp`, `sonde_id`) VALUES
-(1, '2018-10-07 22:00:00', 25, 3);
+INSERT INTO `alertes` (`alert_id`, `time`, `temp`, `sonde_id`, `is_display`) VALUES
+(1, '2018-10-07 22:00:00', 25, 3, 1),
+(2, '2018-10-09 10:15:00', 25, 2, 1),
+(3, '2018-10-09 10:30:00', 23, 2, 1),
+(4, '2018-10-09 10:40:00', 25, 2, 1),
+(5, '2018-10-09 11:10:00', 21, 2, 1),
+(6, '2018-10-09 11:25:00', 21, 2, 1),
+(7, '2018-10-09 11:30:00', 23, 2, 1),
+(8, '2018-10-09 11:45:00', 24, 2, 1),
+(9, '2018-10-09 11:50:00', 22, 2, 1),
+(10, '2018-10-09 11:55:00', 21, 2, 1),
+(11, '2018-10-09 12:10:00', 21, 2, 1),
+(12, '2018-10-09 12:15:00', 21, 2, 1),
+(13, '2018-10-09 12:20:00', 22, 2, 1),
+(14, '2018-10-09 12:25:00', 23, 2, 1),
+(15, '2018-10-09 12:35:00', 21, 2, 1),
+(16, '2018-10-09 12:40:00', 23, 2, 1),
+(17, '2018-10-09 13:00:00', 22, 2, 1),
+(18, '2018-10-09 13:05:00', 22, 2, 1),
+(19, '2018-10-09 13:15:00', 23, 2, 1),
+(20, '2018-10-09 13:25:00', 22, 2, 1),
+(21, '2018-10-09 13:35:00', 21, 2, 1),
+(22, '2018-10-09 13:40:00', 22, 2, 1),
+(23, '2018-10-09 13:55:00', 23, 2, 1),
+(24, '2018-10-09 14:05:00', 23, 2, 1),
+(25, '2018-10-09 14:20:00', 21, 2, 1),
+(26, '2018-10-09 14:30:00', 22, 2, 1),
+(27, '2018-10-09 14:40:00', 22, 2, 1),
+(28, '2018-10-09 14:50:00', 25, 2, 1),
+(29, '2018-10-09 14:55:00', 23, 2, 1),
+(30, '2018-10-09 15:05:00', 23, 2, 1),
+(31, '2018-10-09 15:10:00', 24, 2, 1),
+(32, '2018-10-09 15:25:00', 22, 2, 1),
+(33, '2018-10-09 15:35:00', 24, 2, 1),
+(34, '2018-10-09 15:45:00', 24, 2, 1),
+(35, '2018-10-09 16:05:00', 23, 2, 1),
+(36, '2018-10-09 16:35:00', 22, 2, 1),
+(37, '2018-10-09 16:40:00', 24, 2, 1),
+(38, '2018-10-09 16:45:00', 22, 2, 1),
+(39, '2018-10-09 17:05:00', 23, 2, 1),
+(40, '2018-10-09 17:25:00', 25, 2, 1),
+(41, '2018-10-09 17:30:00', 25, 2, 1),
+(42, '2018-10-09 17:40:00', 23, 2, 1),
+(43, '2018-10-09 17:45:00', 24, 2, 1),
+(44, '2018-10-09 18:00:00', 21, 2, 1),
+(45, '2018-10-09 18:10:00', 25, 2, 1),
+(46, '2018-10-09 18:15:00', 25, 2, 1),
+(47, '2018-10-09 18:19:00', 21, 2, 1),
+(48, '2018-10-09 18:29:00', 22, 2, 1),
+(49, '2018-10-09 18:34:00', 23, 2, 1),
+(50, '2018-10-09 18:44:00', 22, 2, 1),
+(51, '2018-10-09 18:49:00', 22, 2, 1),
+(52, '2018-10-09 18:54:00', 22, 2, 1),
+(53, '2018-10-09 18:59:00', 24, 2, 1),
+(54, '2018-10-09 19:04:00', 22, 2, 1),
+(55, '2018-10-09 19:19:00', 22, 2, 1),
+(56, '2018-10-09 19:24:00', 25, 2, 1),
+(57, '2018-10-09 19:34:00', 23, 2, 1),
+(58, '2018-10-09 19:39:00', 24, 2, 1),
+(59, '2018-10-09 19:44:00', 25, 2, 1),
+(60, '2018-10-09 19:54:00', 24, 2, 1),
+(61, '2018-10-09 19:59:00', 22, 2, 1),
+(62, '2018-10-09 20:04:00', 24, 2, 1),
+(63, '2018-10-09 20:09:00', 23, 2, 1),
+(64, '2018-10-09 20:14:00', 24, 2, 1),
+(65, '2018-10-09 20:34:00', 25, 2, 1),
+(66, '2018-10-09 20:59:00', 24, 2, 1),
+(67, '2018-10-09 21:14:00', 22, 2, 1),
+(68, '2018-10-09 21:19:00', 23, 2, 1),
+(69, '2018-10-09 21:24:00', 24, 2, 1),
+(70, '2018-10-09 21:29:00', 22, 2, 1),
+(71, '2018-10-09 21:54:00', 21, 2, 1),
+(72, '2018-10-09 22:09:00', 22, 2, 1),
+(73, '2018-10-09 22:14:00', 24, 2, 1),
+(74, '2018-10-09 22:29:00', 22, 2, 1),
+(75, '2018-10-09 22:39:00', 22, 2, 1),
+(76, '2018-10-09 22:49:00', 23, 2, 1),
+(77, '2018-10-09 22:59:00', 24, 2, 1),
+(78, '2018-10-09 23:09:00', 25, 2, 1),
+(79, '2018-10-09 23:14:00', 24, 2, 1),
+(80, '2018-10-09 23:24:00', 21, 2, 1),
+(81, '2018-10-09 23:29:00', 23, 2, 1),
+(82, '2018-10-09 23:34:00', 24, 2, 1),
+(83, '2018-10-09 23:49:00', 21, 2, 1),
+(84, '2018-10-09 23:54:00', 22, 2, 1),
+(85, '2018-10-09 23:59:00', 22, 2, 1),
+(86, '2018-10-10 00:14:00', 25, 2, 1),
+(87, '2018-10-10 00:19:00', 25, 2, 1),
+(88, '2018-10-10 00:29:00', 23, 2, 1),
+(89, '2018-10-10 00:54:00', 22, 2, 1),
+(90, '2018-10-10 01:04:00', 24, 2, 1),
+(91, '2018-10-10 01:09:00', 23, 2, 1),
+(92, '2018-10-10 01:19:00', 22, 2, 1),
+(93, '2018-10-10 01:24:00', 25, 2, 1),
+(94, '2018-10-10 01:34:00', 24, 2, 1),
+(95, '2018-10-10 01:44:00', 25, 2, 1),
+(96, '2018-10-10 01:49:00', 25, 2, 1),
+(97, '2018-10-10 02:19:00', 21, 2, 1),
+(98, '2018-10-10 02:39:00', 23, 2, 1),
+(99, '2018-10-10 02:54:00', 25, 2, 1),
+(100, '2018-10-10 03:09:00', 22, 2, 1),
+(101, '2018-10-10 03:39:00', 24, 2, 1),
+(102, '2018-10-10 03:44:00', 24, 2, 1),
+(103, '2018-10-10 03:49:00', 25, 2, 1),
+(104, '2018-10-10 03:54:00', 22, 2, 1),
+(105, '2018-10-10 04:04:00', 25, 3, 1),
+(106, '2018-10-10 04:09:00', 22, 3, 1),
+(107, '2018-10-10 04:14:00', 24, 3, 1),
+(108, '2018-10-10 04:19:00', 22, 3, 1),
+(109, '2018-10-10 04:24:00', 21, 3, 1),
+(110, '2018-10-10 04:44:00', 22, 3, 1),
+(111, '2018-10-10 04:54:00', 24, 3, 1),
+(112, '2018-10-10 05:04:00', 22, 3, 1),
+(113, '2018-10-10 05:14:00', 22, 3, 1),
+(114, '2018-10-10 05:24:00', 21, 3, 1),
+(115, '2018-10-10 05:34:00', 25, 3, 1),
+(116, '2018-10-10 05:44:00', 25, 3, 1),
+(117, '2018-10-10 05:54:00', 25, 3, 1),
+(118, '2018-10-10 06:04:00', 23, 3, 1),
+(119, '2018-10-10 06:24:00', 21, 3, 1),
+(120, '2018-10-10 06:34:00', 24, 3, 1),
+(121, '2018-10-10 06:39:00', 25, 3, 1),
+(122, '2018-10-10 06:44:00', 25, 3, 1),
+(123, '2018-10-10 06:49:00', 23, 3, 1),
+(124, '2018-10-10 06:59:00', 21, 3, 1),
+(125, '2018-10-10 07:09:00', 25, 3, 1),
+(126, '2018-10-10 07:14:00', 21, 3, 1),
+(127, '2018-10-10 07:19:00', 21, 3, 1),
+(128, '2018-10-10 07:29:00', 22, 3, 1),
+(129, '2018-10-10 07:34:00', 22, 3, 1),
+(130, '2018-10-10 07:44:00', 24, 3, 1),
+(131, '2018-10-10 08:04:00', 22, 3, 1),
+(132, '2018-10-10 08:14:00', 21, 3, 1),
+(133, '2018-10-10 08:19:00', 21, 3, 1),
+(134, '2018-10-10 08:34:00', 22, 3, 1),
+(135, '2018-10-10 08:39:00', 24, 3, 1),
+(136, '2018-10-10 08:44:00', 21, 3, 1),
+(137, '2018-10-10 09:09:00', 24, 3, 1),
+(138, '2018-10-10 09:14:00', 21, 3, 1),
+(139, '2018-10-10 09:19:00', 25, 3, 1),
+(140, '2018-10-10 09:24:00', 22, 3, 1),
+(141, '2018-10-10 09:39:00', 22, 3, 1),
+(142, '2018-10-10 09:59:00', 22, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -59,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `capteur` (
   `temperature` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `sonde_id` (`sonde_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=291 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=580 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `capteur`
@@ -355,7 +499,296 @@ INSERT INTO `capteur` (`id`, `sonde_id`, `date`, `temperature`) VALUES
 (287, 1, '2018-10-05 21:49:59', 30),
 (288, 1, '2018-10-05 21:54:59', 18),
 (289, 1, '2018-10-05 21:59:59', 22),
-(290, 3, '2018-10-07 22:00:00', 25);
+(290, 3, '2018-10-07 22:00:00', 25),
+(291, 2, '2018-10-09 10:00:00', 16),
+(292, 2, '2018-10-09 10:05:00', 16),
+(293, 2, '2018-10-09 10:10:00', 18),
+(294, 2, '2018-10-09 10:15:00', 25),
+(295, 2, '2018-10-09 10:20:00', 18),
+(296, 2, '2018-10-09 10:25:00', 15),
+(297, 2, '2018-10-09 10:30:00', 23),
+(298, 2, '2018-10-09 10:35:00', 18),
+(299, 2, '2018-10-09 10:40:00', 25),
+(300, 2, '2018-10-09 10:45:00', 20),
+(301, 2, '2018-10-09 10:50:00', 20),
+(302, 2, '2018-10-09 10:55:00', 16),
+(303, 2, '2018-10-09 11:00:00', 15),
+(304, 2, '2018-10-09 11:05:00', 15),
+(305, 2, '2018-10-09 11:10:00', 21),
+(306, 2, '2018-10-09 11:15:00', 15),
+(307, 2, '2018-10-09 11:20:00', 16),
+(308, 2, '2018-10-09 11:25:00', 21),
+(309, 2, '2018-10-09 11:30:00', 23),
+(310, 2, '2018-10-09 11:35:00', 20),
+(311, 2, '2018-10-09 11:40:00', 19),
+(312, 2, '2018-10-09 11:45:00', 24),
+(313, 2, '2018-10-09 11:50:00', 22),
+(314, 2, '2018-10-09 11:55:00', 21),
+(315, 2, '2018-10-09 12:00:00', 16),
+(316, 2, '2018-10-09 12:05:00', 19),
+(317, 2, '2018-10-09 12:10:00', 21),
+(318, 2, '2018-10-09 12:15:00', 21),
+(319, 2, '2018-10-09 12:20:00', 22),
+(320, 2, '2018-10-09 12:25:00', 23),
+(321, 2, '2018-10-09 12:30:00', 16),
+(322, 2, '2018-10-09 12:35:00', 21),
+(323, 2, '2018-10-09 12:40:00', 23),
+(324, 2, '2018-10-09 12:45:00', 16),
+(325, 2, '2018-10-09 12:50:00', 18),
+(326, 2, '2018-10-09 12:55:00', 15),
+(327, 2, '2018-10-09 13:00:00', 22),
+(328, 2, '2018-10-09 13:05:00', 22),
+(329, 2, '2018-10-09 13:10:00', 17),
+(330, 2, '2018-10-09 13:15:00', 23),
+(331, 2, '2018-10-09 13:20:00', 15),
+(332, 2, '2018-10-09 13:25:00', 22),
+(333, 2, '2018-10-09 13:30:00', 18),
+(334, 2, '2018-10-09 13:35:00', 21),
+(335, 2, '2018-10-09 13:40:00', 22),
+(336, 2, '2018-10-09 13:45:00', 20),
+(337, 2, '2018-10-09 13:50:00', 18),
+(338, 2, '2018-10-09 13:55:00', 23),
+(339, 2, '2018-10-09 14:00:00', 19),
+(340, 2, '2018-10-09 14:05:00', 23),
+(341, 2, '2018-10-09 14:10:00', 15),
+(342, 2, '2018-10-09 14:15:00', 16),
+(343, 2, '2018-10-09 14:20:00', 21),
+(344, 2, '2018-10-09 14:25:00', 15),
+(345, 2, '2018-10-09 14:30:00', 22),
+(346, 2, '2018-10-09 14:35:00', 19),
+(347, 2, '2018-10-09 14:40:00', 22),
+(348, 2, '2018-10-09 14:45:00', 19),
+(349, 2, '2018-10-09 14:50:00', 25),
+(350, 2, '2018-10-09 14:55:00', 23),
+(351, 2, '2018-10-09 15:00:00', 18),
+(352, 2, '2018-10-09 15:05:00', 23),
+(353, 2, '2018-10-09 15:10:00', 24),
+(354, 2, '2018-10-09 15:15:00', 15),
+(355, 2, '2018-10-09 15:20:00', 16),
+(356, 2, '2018-10-09 15:25:00', 22),
+(357, 2, '2018-10-09 15:30:00', 18),
+(358, 2, '2018-10-09 15:35:00', 24),
+(359, 2, '2018-10-09 15:40:00', 15),
+(360, 2, '2018-10-09 15:45:00', 24),
+(361, 2, '2018-10-09 15:50:00', 15),
+(362, 2, '2018-10-09 15:55:00', 16),
+(363, 2, '2018-10-09 16:00:00', 18),
+(364, 2, '2018-10-09 16:05:00', 23),
+(365, 2, '2018-10-09 16:10:00', 19),
+(366, 2, '2018-10-09 16:15:00', 17),
+(367, 2, '2018-10-09 16:20:00', 20),
+(368, 2, '2018-10-09 16:25:00', 16),
+(369, 2, '2018-10-09 16:30:00', 17),
+(370, 2, '2018-10-09 16:35:00', 22),
+(371, 2, '2018-10-09 16:40:00', 24),
+(372, 2, '2018-10-09 16:45:00', 22),
+(373, 2, '2018-10-09 16:50:00', 19),
+(374, 2, '2018-10-09 16:55:00', 15),
+(375, 2, '2018-10-09 17:00:00', 17),
+(376, 2, '2018-10-09 17:05:00', 23),
+(377, 2, '2018-10-09 17:10:00', 16),
+(378, 2, '2018-10-09 17:15:00', 17),
+(379, 2, '2018-10-09 17:20:00', 15),
+(380, 2, '2018-10-09 17:25:00', 25),
+(381, 2, '2018-10-09 17:30:00', 25),
+(382, 2, '2018-10-09 17:35:00', 18),
+(383, 2, '2018-10-09 17:40:00', 23),
+(384, 2, '2018-10-09 17:45:00', 24),
+(385, 2, '2018-10-09 17:50:00', 18),
+(386, 2, '2018-10-09 17:55:00', 17),
+(387, 2, '2018-10-09 18:00:00', 21),
+(388, 2, '2018-10-09 18:05:00', 18),
+(389, 2, '2018-10-09 18:10:00', 25),
+(390, 2, '2018-10-09 18:15:00', 25),
+(391, 2, '2018-10-09 18:19:00', 21),
+(392, 2, '2018-10-09 18:24:00', 15),
+(393, 2, '2018-10-09 18:29:00', 22),
+(394, 2, '2018-10-09 18:34:00', 23),
+(395, 2, '2018-10-09 18:39:00', 17),
+(396, 2, '2018-10-09 18:44:00', 22),
+(397, 2, '2018-10-09 18:49:00', 22),
+(398, 2, '2018-10-09 18:54:00', 22),
+(399, 2, '2018-10-09 18:59:00', 24),
+(400, 2, '2018-10-09 19:04:00', 22),
+(401, 2, '2018-10-09 19:09:00', 17),
+(402, 2, '2018-10-09 19:14:00', 17),
+(403, 2, '2018-10-09 19:19:00', 22),
+(404, 2, '2018-10-09 19:24:00', 25),
+(405, 2, '2018-10-09 19:29:00', 16),
+(406, 2, '2018-10-09 19:34:00', 23),
+(407, 2, '2018-10-09 19:39:00', 24),
+(408, 2, '2018-10-09 19:44:00', 25),
+(409, 2, '2018-10-09 19:49:00', 15),
+(410, 2, '2018-10-09 19:54:00', 24),
+(411, 2, '2018-10-09 19:59:00', 22),
+(412, 2, '2018-10-09 20:04:00', 24),
+(413, 2, '2018-10-09 20:09:00', 23),
+(414, 2, '2018-10-09 20:14:00', 24),
+(415, 2, '2018-10-09 20:19:00', 18),
+(416, 2, '2018-10-09 20:24:00', 16),
+(417, 2, '2018-10-09 20:29:00', 18),
+(418, 2, '2018-10-09 20:34:00', 25),
+(419, 2, '2018-10-09 20:39:00', 15),
+(420, 2, '2018-10-09 20:44:00', 20),
+(421, 2, '2018-10-09 20:49:00', 17),
+(422, 2, '2018-10-09 20:54:00', 17),
+(423, 2, '2018-10-09 20:59:00', 24),
+(424, 2, '2018-10-09 21:04:00', 20),
+(425, 2, '2018-10-09 21:09:00', 18),
+(426, 2, '2018-10-09 21:14:00', 22),
+(427, 2, '2018-10-09 21:19:00', 23),
+(428, 2, '2018-10-09 21:24:00', 24),
+(429, 2, '2018-10-09 21:29:00', 22),
+(430, 2, '2018-10-09 21:34:00', 16),
+(431, 2, '2018-10-09 21:39:00', 20),
+(432, 2, '2018-10-09 21:44:00', 19),
+(433, 2, '2018-10-09 21:49:00', 20),
+(434, 2, '2018-10-09 21:54:00', 21),
+(435, 2, '2018-10-09 21:59:00', 19),
+(436, 2, '2018-10-09 22:04:00', 20),
+(437, 2, '2018-10-09 22:09:00', 22),
+(438, 2, '2018-10-09 22:14:00', 24),
+(439, 2, '2018-10-09 22:19:00', 18),
+(440, 2, '2018-10-09 22:24:00', 17),
+(441, 2, '2018-10-09 22:29:00', 22),
+(442, 2, '2018-10-09 22:34:00', 20),
+(443, 2, '2018-10-09 22:39:00', 22),
+(444, 2, '2018-10-09 22:44:00', 18),
+(445, 2, '2018-10-09 22:49:00', 23),
+(446, 2, '2018-10-09 22:54:00', 19),
+(447, 2, '2018-10-09 22:59:00', 24),
+(448, 2, '2018-10-09 23:04:00', 15),
+(449, 2, '2018-10-09 23:09:00', 25),
+(450, 2, '2018-10-09 23:14:00', 24),
+(451, 2, '2018-10-09 23:19:00', 16),
+(452, 2, '2018-10-09 23:24:00', 21),
+(453, 2, '2018-10-09 23:29:00', 23),
+(454, 2, '2018-10-09 23:34:00', 24),
+(455, 2, '2018-10-09 23:39:00', 20),
+(456, 2, '2018-10-09 23:44:00', 15),
+(457, 2, '2018-10-09 23:49:00', 21),
+(458, 2, '2018-10-09 23:54:00', 22),
+(459, 2, '2018-10-09 23:59:00', 22),
+(460, 2, '2018-10-10 00:04:00', 19),
+(461, 2, '2018-10-10 00:09:00', 17),
+(462, 2, '2018-10-10 00:14:00', 25),
+(463, 2, '2018-10-10 00:19:00', 25),
+(464, 2, '2018-10-10 00:24:00', 20),
+(465, 2, '2018-10-10 00:29:00', 23),
+(466, 2, '2018-10-10 00:34:00', 20),
+(467, 2, '2018-10-10 00:39:00', 18),
+(468, 2, '2018-10-10 00:44:00', 16),
+(469, 2, '2018-10-10 00:49:00', 19),
+(470, 2, '2018-10-10 00:54:00', 22),
+(471, 2, '2018-10-10 00:59:00', 17),
+(472, 2, '2018-10-10 01:04:00', 24),
+(473, 2, '2018-10-10 01:09:00', 23),
+(474, 2, '2018-10-10 01:14:00', 20),
+(475, 2, '2018-10-10 01:19:00', 22),
+(476, 2, '2018-10-10 01:24:00', 25),
+(477, 2, '2018-10-10 01:29:00', 15),
+(478, 2, '2018-10-10 01:34:00', 24),
+(479, 2, '2018-10-10 01:39:00', 20),
+(480, 2, '2018-10-10 01:44:00', 25),
+(481, 2, '2018-10-10 01:49:00', 25),
+(482, 2, '2018-10-10 01:54:00', 17),
+(483, 2, '2018-10-10 01:59:00', 16),
+(484, 2, '2018-10-10 02:04:00', 15),
+(485, 2, '2018-10-10 02:09:00', 15),
+(486, 2, '2018-10-10 02:14:00', 16),
+(487, 2, '2018-10-10 02:19:00', 21),
+(488, 2, '2018-10-10 02:24:00', 16),
+(489, 2, '2018-10-10 02:29:00', 16),
+(490, 2, '2018-10-10 02:34:00', 15),
+(491, 2, '2018-10-10 02:39:00', 23),
+(492, 2, '2018-10-10 02:44:00', 16),
+(493, 2, '2018-10-10 02:49:00', 20),
+(494, 2, '2018-10-10 02:54:00', 25),
+(495, 2, '2018-10-10 02:59:00', 17),
+(496, 2, '2018-10-10 03:04:00', 17),
+(497, 2, '2018-10-10 03:09:00', 22),
+(498, 2, '2018-10-10 03:14:00', 18),
+(499, 2, '2018-10-10 03:19:00', 20),
+(500, 2, '2018-10-10 03:24:00', 16),
+(501, 2, '2018-10-10 03:29:00', 19),
+(502, 2, '2018-10-10 03:34:00', 20),
+(503, 2, '2018-10-10 03:39:00', 24),
+(504, 2, '2018-10-10 03:44:00', 24),
+(505, 2, '2018-10-10 03:49:00', 25),
+(506, 2, '2018-10-10 03:54:00', 22),
+(507, 3, '2018-10-10 03:59:00', 15),
+(508, 3, '2018-10-10 04:04:00', 25),
+(509, 3, '2018-10-10 04:09:00', 22),
+(510, 3, '2018-10-10 04:14:00', 24),
+(511, 3, '2018-10-10 04:19:00', 22),
+(512, 3, '2018-10-10 04:24:00', 21),
+(513, 3, '2018-10-10 04:29:00', 15),
+(514, 3, '2018-10-10 04:34:00', 19),
+(515, 3, '2018-10-10 04:39:00', 15),
+(516, 3, '2018-10-10 04:44:00', 22),
+(517, 3, '2018-10-10 04:49:00', 18),
+(518, 3, '2018-10-10 04:54:00', 24),
+(519, 3, '2018-10-10 04:59:00', 16),
+(520, 3, '2018-10-10 05:04:00', 22),
+(521, 3, '2018-10-10 05:09:00', 17),
+(522, 3, '2018-10-10 05:14:00', 22),
+(523, 3, '2018-10-10 05:19:00', 18),
+(524, 3, '2018-10-10 05:24:00', 21),
+(525, 3, '2018-10-10 05:29:00', 20),
+(526, 3, '2018-10-10 05:34:00', 25),
+(527, 3, '2018-10-10 05:39:00', 19),
+(528, 3, '2018-10-10 05:44:00', 25),
+(529, 3, '2018-10-10 05:49:00', 16),
+(530, 3, '2018-10-10 05:54:00', 25),
+(531, 3, '2018-10-10 05:59:00', 18),
+(532, 3, '2018-10-10 06:04:00', 23),
+(533, 3, '2018-10-10 06:09:00', 19),
+(534, 3, '2018-10-10 06:14:00', 16),
+(535, 3, '2018-10-10 06:19:00', 16),
+(536, 3, '2018-10-10 06:24:00', 21),
+(537, 3, '2018-10-10 06:29:00', 20),
+(538, 3, '2018-10-10 06:34:00', 24),
+(539, 3, '2018-10-10 06:39:00', 25),
+(540, 3, '2018-10-10 06:44:00', 25),
+(541, 3, '2018-10-10 06:49:00', 23),
+(542, 3, '2018-10-10 06:54:00', 20),
+(543, 3, '2018-10-10 06:59:00', 21),
+(544, 3, '2018-10-10 07:04:00', 15),
+(545, 3, '2018-10-10 07:09:00', 25),
+(546, 3, '2018-10-10 07:14:00', 21),
+(547, 3, '2018-10-10 07:19:00', 21),
+(548, 3, '2018-10-10 07:24:00', 18),
+(549, 3, '2018-10-10 07:29:00', 22),
+(550, 3, '2018-10-10 07:34:00', 22),
+(551, 3, '2018-10-10 07:39:00', 17),
+(552, 3, '2018-10-10 07:44:00', 24),
+(553, 3, '2018-10-10 07:49:00', 19),
+(554, 3, '2018-10-10 07:54:00', 16),
+(555, 3, '2018-10-10 07:59:00', 17),
+(556, 3, '2018-10-10 08:04:00', 22),
+(557, 3, '2018-10-10 08:09:00', 16),
+(558, 3, '2018-10-10 08:14:00', 21),
+(559, 3, '2018-10-10 08:19:00', 21),
+(560, 3, '2018-10-10 08:24:00', 17),
+(561, 3, '2018-10-10 08:29:00', 17),
+(562, 3, '2018-10-10 08:34:00', 22),
+(563, 3, '2018-10-10 08:39:00', 24),
+(564, 3, '2018-10-10 08:44:00', 21),
+(565, 3, '2018-10-10 08:49:00', 18),
+(566, 3, '2018-10-10 08:54:00', 19),
+(567, 3, '2018-10-10 08:59:00', 17),
+(568, 3, '2018-10-10 09:04:00', 19),
+(569, 3, '2018-10-10 09:09:00', 24),
+(570, 3, '2018-10-10 09:14:00', 21),
+(571, 3, '2018-10-10 09:19:00', 25),
+(572, 3, '2018-10-10 09:24:00', 22),
+(573, 3, '2018-10-10 09:29:00', 18),
+(574, 3, '2018-10-10 09:34:00', 15),
+(575, 3, '2018-10-10 09:39:00', 22),
+(576, 3, '2018-10-10 09:44:00', 19),
+(577, 3, '2018-10-10 09:49:00', 16),
+(578, 3, '2018-10-10 09:54:00', 15),
+(579, 3, '2018-10-10 09:59:00', 22);
 
 --
 -- Déclencheurs `capteur`
@@ -364,8 +797,8 @@ DROP TRIGGER IF EXISTS `copy2alert`;
 DELIMITER $$
 CREATE TRIGGER `copy2alert` BEFORE INSERT ON `capteur` FOR EACH ROW IF NEW.temperature > 20 THEN
 	BEGIN
-    	INSERT INTO alertes(alertes.time, alertes.temp, alertes.sonde_id)
-        	VALUES (NEW.date, NEW.temperature, NEW.sonde_id);
+    	INSERT INTO alertes(alertes.time, alertes.temp, alertes.sonde_id, alertes.is_display)
+        	VALUES (NEW.date, NEW.temperature, NEW.sonde_id, '1');
     END;
 END IF
 $$
@@ -408,6 +841,7 @@ CREATE TABLE IF NOT EXISTS `members` (
   `password` text COLLATE utf8_unicode_ci NOT NULL,
   `isOnline` tinyint(2) NOT NULL COMMENT '0: offline / 1:online / 2:busy',
   `id_company` int(11) NOT NULL,
+  `date_inscription` timestamp NOT NULL,
   `admin` tinyint(1) NOT NULL COMMENT '0 : not an admin / 1 : admin',
   PRIMARY KEY (`member_id`),
   KEY `id_company` (`id_company`)
@@ -417,8 +851,8 @@ CREATE TABLE IF NOT EXISTS `members` (
 -- Déchargement des données de la table `members`
 --
 
-INSERT INTO `members` (`member_id`, `name`, `email`, `password`, `isOnline`, `id_company`, `admin`) VALUES
-(3, 'a', 'a', '0cc175b9c0f1b6a831c399e269772661', 1, 1, 1);
+INSERT INTO `members` (`member_id`, `name`, `email`, `password`, `isOnline`, `id_company`, `date_inscription`, `admin`) VALUES
+(3, 'a', 'a', '0cc175b9c0f1b6a831c399e269772661', 1, 1, '2018-10-08 22:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -473,6 +907,156 @@ ALTER TABLE `members`
 --
 ALTER TABLE `produits`
   ADD CONSTRAINT `produits_ibfk_1` FOREIGN KEY (`id_entreprise`) REFERENCES `entreprise` (`company_id`) ON UPDATE CASCADE;
+--
+-- Base de données :  `piezo`
+--
+CREATE DATABASE IF NOT EXISTS `piezo` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `piezo`;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `job`
+--
+
+DROP TABLE IF EXISTS `job`;
+CREATE TABLE IF NOT EXISTS `job` (
+  `id_job` int(11) NOT NULL AUTO_INCREMENT,
+  `isonline` tinyint(4) NOT NULL DEFAULT '0' COMMENT '-1 : Delete / 0 : Not Online / 1 : Online',
+  `titre_job` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `description_job` longtext CHARACTER SET utf8 NOT NULL,
+  `date_create` date NOT NULL,
+  `lien` text CHARACTER SET utf8 NOT NULL,
+  `member_id` int(11) NOT NULL,
+  PRIMARY KEY (`id_job`)
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `job`
+--
+
+INSERT INTO `job` (`id_job`, `isonline`, `titre_job`, `description_job`, `date_create`, `lien`, `member_id`) VALUES
+(1, 1, 'Senior/Higher Research Scientist - Electronics Interconnection Technologies - £30k - £43k', 'The Electronic Interconnects team is seeking a talented scientist to join their Electronics Interconnects team. Deadline 27th March 2015.', '2016-06-27', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `member`
+--
+
+DROP TABLE IF EXISTS `member`;
+CREATE TABLE IF NOT EXISTS `member` (
+  `member_id` int(5) NOT NULL AUTO_INCREMENT,
+  `title` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `mail_address` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `organisation` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `division` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `position` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `contact_number` int(20) NOT NULL,
+  `address` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `post_zip_code` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `city` char(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `country_id` char(3) COLLATE utf8_unicode_ci NOT NULL,
+  `directory_id` int(3) NOT NULL,
+  `concentdate` date NOT NULL,
+  `contribution` tinyint(1) DEFAULT NULL,
+  `admin` tinyint(1) DEFAULT '0' COMMENT '0 : not an admin / 1 : admin',
+  PRIMARY KEY (`member_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `member`
+--
+
+INSERT INTO `member` (`member_id`, `title`, `name`, `mail_address`, `password`, `organisation`, `division`, `position`, `contact_number`, `address`, `post_zip_code`, `city`, `country_id`, `directory_id`, `concentdate`, `contribution`, `admin`) VALUES
+(1, 'Mr', 'a', 'a', '0cc175b9c0f1b6a831c399e269772661', 'a', 'a', 'a', 1, 'a', 'a', 'a', 'FR', 1, '2018-06-07', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `menu`
+--
+
+DROP TABLE IF EXISTS `menu`;
+CREATE TABLE IF NOT EXISTS `menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `item` text COLLATE utf8_unicode_ci NOT NULL,
+  `only_member` tinyint(1) NOT NULL COMMENT ' 0 : all / 1 : members',
+  `sub_item` text COLLATE utf8_unicode_ci NOT NULL,
+  `link` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `menu`
+--
+
+INSERT INTO `menu` (`id`, `item`, `only_member`, `sub_item`, `link`) VALUES
+(1, 'Home', 0, '', 'index'),
+(2, 'About', 0, '', ''),
+(3, 'Applications', 0, '', ''),
+(4, 'Conference', 0, '', ''),
+(5, 'Resources', 0, 'What is piezo;Piezo history;Publication;Member search', ''),
+(6, 'Sponsor', 0, '', ''),
+(7, 'News & Events', 0, 'News & Events;Job vacancies', 'news-events'),
+(8, 'Contacts', 0, '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `news_events`
+--
+
+DROP TABLE IF EXISTS `news_events`;
+CREATE TABLE IF NOT EXISTS `news_events` (
+  `id_newsevents` int(11) NOT NULL AUTO_INCREMENT,
+  `isonline` tinyint(4) NOT NULL DEFAULT '0' COMMENT '-1 : Delete / 0 : Not Online / 1 : Online',
+  `date_create` date NOT NULL,
+  `titre` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `description` longtext CHARACTER SET utf8 NOT NULL,
+  `member_id` int(11) NOT NULL,
+  PRIMARY KEY (`id_newsevents`)
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `news_events`
+--
+
+INSERT INTO `news_events` (`id_newsevents`, `isonline`, `date_create`, `titre`, `description`, `member_id`) VALUES
+(1, 1, '2015-08-07', '<p>Nanostrain workshop at APS Meeting in May</p>', '<p>Developing synchrotron sample environments to study next generation field-driven device physics.\r\n	Workshop Organized jointly by Philip Ryan (APS), Markys Cain (NPL), Paul Thompson (XMaS)</p>', 1),
+(2, 1, '2018-04-28', '<p>a</p>\r\n', '<p>a</p>\r\n', 1),
+(13, 0, '2018-05-14', '<p>bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour</p>\r\n', '<p>bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour bonjour</p>\r\n', 1),
+(23, 1, '2017-02-19', '<p>PIEZO2017: Electroceramics for End-users IX</p>', '<p>PIEZO2017: Electroceramics for End-users IX\" will take place in Cercedilla (Madrid, Spain) the next 19-22 February, 2017 and will be organised by CSIC and UPM</p>', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `publications`
+--
+
+DROP TABLE IF EXISTS `publications`;
+CREATE TABLE IF NOT EXISTS `publications` (
+  `id_pubs` int(11) NOT NULL AUTO_INCREMENT,
+  `isonline` tinyint(4) NOT NULL DEFAULT '0' COMMENT '-1 : Delete / 0 : Not Online / 1 : Online',
+  `titre_pubs` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `author` text CHARACTER SET utf8 NOT NULL,
+  `journal` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `date` date NOT NULL,
+  `lien_ext` text CHARACTER SET utf8 NOT NULL,
+  `member_id` int(11) NOT NULL,
+  PRIMARY KEY (`id_pubs`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `publications`
+--
+
+INSERT INTO `publications` (`id_pubs`, `isonline`, `titre_pubs`, `author`, `journal`, `date`, `lien_ext`, `member_id`) VALUES
+(1, 1, 'azerty', 'moi', NULL, '2018-05-10', 'google.com', 1),
+(2, 1, 'This is a second test', 'Test1, Test2', 'JournalTest', '2018-05-10', 'http://dx.doi.org/10.1021/acs.cgd.5b01271', 1),
+(3, -1, '<p>jrakzrkj<sup><sub>ezakaeza</sub></sup>eazezakeaz</p>\r\n', 'a', NULL, '2018-09-11', 'google.fr', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
