@@ -8,12 +8,12 @@
     if(isset($_GET['id_company']))
         $company_id = $_GET['id_company'];
     else
-        $company_id = 1;
+        $company_id = null;
     //Get All captors GPS
     $gps_lat = [];
     $gps_long = [];
     $ref_id = [];
-    $sql_get_gps = "SELECT * FROM produits WHERE id_entreprise=$company_id";
+    $sql_get_gps = "SELECT * FROM produits JOIN entreprise WHERE produits.id_entreprise=entreprise.company_id AND md5(entreprise.Nom)='".$company_id."'";
     $result = mysqli_query($sqlconnect, $sql_get_gps);
     while ($row = mysqli_fetch_assoc($result)) {
         $gps_lat[] = $row['GPS_lat'];
@@ -143,7 +143,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $sql_get_temp = "SELECT * FROM alertes JOIN produits, entreprise WHERE alertes.sonde_id=produits.id_produit AND produits.id_entreprise=entreprise.company_id AND entreprise.company_id=$company_id AND alertes.is_display=1 ORDER BY time DESC LIMIT 5";
+                                        $sql_get_temp = "SELECT * FROM alertes JOIN produits, entreprise WHERE alertes.sonde_id=produits.id_produit AND produits.id_entreprise=entreprise.company_id AND md5(entreprise.Nom)='".$company_id."' AND alertes.is_display=1 ORDER BY time DESC LIMIT 5";
                                         $result = mysqli_query($sqlconnect, $sql_get_temp);
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             echo "<tr>";
