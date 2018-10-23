@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 
-	<title>TAHITI - Accueil</title>
+	<title>TAHITI - Board</title>
 
 	<link rel="shortcut icon" href="assets/img/icon.png">
 
@@ -31,11 +31,11 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
-					<li class="active"><a href="index.html">Accueil</a></li>
+					<li><a href="index.html">Accueil</a></li>
 					<li><a href="index.html#news">Actualités</a></li>
 					<li><a href="index.html#about">TAHITI</a></li>
 					<li><a href="index.html#products">Notre produit</a></li>
-					<li><a href="board.html">Board</a></li>
+					<li class="active"><a href="board.html">Board</a></li>
 					<li><a href="recruit.html">Nous rejoindre</a></li>
 					<!--<li><a href="#contact">Nous contacter</a></li>-->
 					<li><a class="btn" href="login.php">SIGN IN / SIGN UP</a></li>
@@ -46,80 +46,17 @@
 	</div>
 	<!-- /.navbar -->
 
-	<!-- Header -->
-	<header id="head">
-		<div class="container">
-			<div class="row">
-				<h1 class="lead">Bienvenue sur le nouveau site de TAHITI</h1>
-				<p><br></p>
-				<p><a class="btn btn-action btn-lg" role="button" href="#about">Plus d'infos</a> <a class="btn btn-default btn-lg"
-					 role="button" href="#products">Notre produit</a></p>
-			</div>
-		</div>
-	</header>
-	<!-- /Header -->
-
-
-	<!-- News -->
-	<div class="container" id=news">
-		<br> <br>
-		<h2 class="text-center top-space">Dernière actualité</h2><br>
-		<h4><i class="fa fa-github"></i>TAHITI dans le projet AWAIE</h4> <br>
-		<p class="text-muted">
-			Dans le cadre de la conférence ACAD, TAHITI va travailler sur le projet AWAIE.
-			Ce challenge du  le comité Maxime Bavencoffe est proposé à l'ensemble
-			des acteurs de la réception de données.
-		</p>
-	</div>
-	<!-- /News -->
-
-	<!-- About -->
-	<div class="container" id="about">
-		<br> <br>
-		<h2 class="text-center top-space">TAHITI, qui sommes nous ?</h2>
-		<p class="text-muted">
-			A la base, TAHITI signifie Transfert Automate Html Intégration et Traitement de l'Information.
-			Derrière ce nom barbare se cachent cinq jeunes ingénieurs de l'INSA Centre Val de Loire.
-			Au fur et à mesure de leur formation et de leurs stages, ils ont remarqué que beaucoup d'entreprises
-			ne parvenaient pas à avoir des solutions concrètes pour leur récupération de données. <br> <br>
-
-			Ils décident alors de travailler ensemble et créer pour cela une structure : TAHITI.<br><br>
-		</p>
-	</div>
-	<!-- /About-->
-
-	<!-- Products -->
-	<div class="container" id="products">
-		<br> <br>
-		<h2 class="text-center top-space">Notre produit</h2>
-		<p class="text-muted">
-			Ex turba vero imae sortis et paupertinae in tabernis aliqui pernoctant vinariis, non nulli velariis umbraculorum
-			theatralium latent, quae Campanam imitatus lasciviam Catulus in aedilitate sua suspendit omnium primus; aut
-			pugnaciter aleis certant turpi sono fragosis naribus introrsum reducto spiritu concrepantes; aut quod est studiorum
-			omnium maximum ab ortu lucis ad vesperam sole fatiscunt vel pluviis, per minutias aurigarum equorumque praecipua vel
-			delicta scrutantes.<br><br>
-
-			Alii summum decus in carruchis solito altioribus et ambitioso vestium cultu ponentes sudant sub ponderibus
-			lacernarum, quas in collis insertas cingulis ipsis adnectunt nimia subtegminum tenuitate perflabiles, expandentes
-			eas crebris agitationibus maximeque sinistra, ut longiores fimbriae tunicaeque perspicue luceant varietate liciorum
-			effigiatae in species animalium multiformes.<br><br>
-
-			His cognitis Gallus ut serpens adpetitus telo vel saxo iamque spes extremas opperiens et succurrens saluti suae
-			quavis ratione colligi omnes iussit armatos et cum starent attoniti, districta dentium acie stridens adeste inquit
-			viri fortes mihi periclitanti vobiscum.<br><br>
-		</p>
-	</div>
-	<!-- /Products-->
-
-	<!-- About Us
-	<div class="jumbotron top-space container" id="about-us">
+	<!-- About Us -->
+	<div class="jumbotron top-space container">
 		<h2 class="text-center top-space">Board</h2>
 
 		<div class="row">
 			<div class="col-md-12 col-sm-12 highlight">
 				<div class="h-caption">
-					<h4><i class="fa fa-cogs"></i>Développeur Pilote<br>
-					Baptiste Chevallier</h4>
+					<h4><i class="fa fa-cogs"></i>
+					<a href="board_bchevallier.html">
+					Développeur Pilote<br>
+					Baptiste Chevallier</h4></a>
 				</div>
 				<div class="h-body text-center">
 					<p>Notre leader, notre guide. Seul Lui a le pouvoir de décider. Seul Lui a réponse à tout.<br>
@@ -164,31 +101,8 @@
 				</div>
 			</div>
 		</div> <!-- /row  -->
-	<!-- </div>
-	/About Us -->
-
-	<!-- Contact -->
-	<div class="container text-center container" id="contact">
-		<h2 class="text-center top-space">Nous contacter</h2>
-		<br>
-
-		<div class="contact" style="text-align:center;">
-			<div class="form-group">
-				<form method="post" action="">
-					<input type="text" name="name" class="form-control" placeholder="Votre nom" tabindex="1"><br>
-					<input type="text" name="email" class="form-control" placeholder="Votre adresse mail" tabindex="2"><br>
-
-					<textarea name="content" class="form-control" rows="5" placeholder="Votre message" tabindex="3"></textarea><br>
-
-					<button class="btn btn-action btn-lg" type="submit" name="Login" tabindex="4"><i class="fa fa-envelope"></i> Envoyer</button>
-
-				</form>
-			</div>
-
-		</div> <!-- /row -->
-
-
-	</div> <!-- /contact -->
+	</div>
+	<!-- /About Us -->
 
 
 

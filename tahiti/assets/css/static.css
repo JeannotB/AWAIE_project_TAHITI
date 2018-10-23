@@ -142,6 +142,7 @@ label {
 
 .text-muted {
 	color: #888;
+	text-align: justify;
 }
 
 .breadcrumb {
@@ -313,4 +314,26 @@ img.pull-left {
 
 textarea {
 	resize: vertical;
+}
+
+/* BOARD */
+
+.ul_board{
+	list-style-type: none;
+	padding-top: 120px;
+	margin: 0px;
+	text-align: center;
+}
+
+.li_board{
+	margin-left: 10px;
+	float: left;
+	text-align: center;
+}
+
+.li_board .ul_board .a_board{
+	display: block;
+	float: left;
+	text-align: center;
+	text-color: black;
 }
