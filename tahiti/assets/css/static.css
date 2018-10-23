@@ -320,20 +320,41 @@ textarea {
 
 .ul_board{
 	list-style-type: none;
-	padding-top: 120px;
-	margin: 0px;
+	padding-top: 130px;
 	text-align: center;
 }
 
-.li_board{
-	margin-left: 10px;
-	float: left;
+.li_board {
 	text-align: center;
+	display: inline;
+	margin-right: 2%;
 }
 
 .li_board .ul_board .a_board{
-	display: block;
-	float: left;
 	text-align: center;
-	text-color: black;
+	align-content: center;
+}
+
+.a_board{
+	color:#777;
+	text-decoration: none;
+}
+
+.a_board:hover{
+	color:#333;
+	text-decoration: none;
+}
+
+.a_board_active{
+	font-weight: bold;
+	color:#333;
+	text-decoration: none;
+}
+
+.float_img{
+	height: 160px;
+	text-align: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
