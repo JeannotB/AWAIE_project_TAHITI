@@ -15,6 +15,9 @@
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
 
+        <!--- Icon -->
+        <link rel="icon" type="image/png" href="assets/img/icon.png" />
+
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -72,7 +75,7 @@
         <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
         <script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
         <script>
-            $.backstretch("assets/img/login-bg.jpg", {speed: 500});
+            $.backstretch("assets/img/automate2.png", {speed: 500});
         </script>
 
         <script>

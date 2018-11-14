@@ -779,8 +779,8 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 	color: #ffffff;
 	font-size: 16px;
 	padding: 0 10px;
-	line-height: 60px;
-	height: 60px;
+	line-height: 40px;
+	height: 40px;
 	margin: 0;
 	background: #ff865c;
 	text-align: center;
@@ -794,7 +794,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .ds .desc {
 	border-bottom: 1px solid #eaeaea;
 	display: inline-block;
-	padding: 15px 0;
+	padding: 5px 0;
 	width: 100%;
 }
 
@@ -1215,35 +1215,43 @@ PANELS CONFIGURATIONS
 	margin-top: 2px;
 }
 
-/* Weather 3 */
+/* Weather 3 & 4 */
 .weather-3 {
 	background: #ffcf00;
 }
 
-.weather-3 i {
+.weather-4 {
+    background: #444c57;
+}
+
+.weather-4 h3 {
+    color: white;
+}
+
+.weather-3 i, .weather-4 i {
 	color: white;
 	margin-top: 30px;
 	font-size: 70px;
 }
-.weather-3 h1 {
+.weather-3 h1,.weather-4 h1 {
 	margin-top: 10px;
 	color: white;
 	font-weight: 900;
 }
-.weather-3 .info {
+.weather-3 .info, .weather-4 .info {
 	background: #f2f2f2;
 }
-.weather-3 .info i {
+.weather-3 .info i, .weather-4 .info i {
 	font-size: 15px;
 	color: #c2c2c2;
 	margin-bottom: 0px;
 	margin-top: 10px;
 }
-.weather-3 .info h3 {
+.weather-3 .info h3, .weather-4 .info h3 {
 	font-weight: 900;
 	margin-bottom: 0px;
 }
-.weather-3 .info p {
+.weather-3 .info p, .weather-4 .info p {
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 16px;
