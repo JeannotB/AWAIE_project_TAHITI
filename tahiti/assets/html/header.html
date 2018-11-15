@@ -4,9 +4,26 @@
             <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
         </div>
         <!--logo start-->
-        <a href="index.html" class="logo"><b>Transfert Automate Html Intégration et Traitement de l'Information</b></a>
+        <a href="dashboard.php" class="logo">
+            <b>
+                <script>
+                    if(window.innerWidth > 780){
+                        document.write("Transfert Automate Html Intégration et Traitement de l'Information");
+                    }
+                    else {
+                        document.write("TAHITI");
+                    }
+        
+                </script>
+            </b>
+        </a>
         <!--logo end-->
-        <div class="nav notify-row" id="top_menu">
+        <div class="top-menu">
+            <ul class="nav pull-right top-menu">
+                <li><a class="logout" href="./assets/php/logout_function.php">Logout</a></li>
+            </ul>
+        </div>
+        <div class="nav notify-row pull-right" id="top_menu">
             <!--  notification start -->
             <ul class="nav top-menu">
                 <!-- settings start -->
@@ -145,11 +162,6 @@
                 <!-- inbox dropdown end -->
             </ul>
             <!--  notification end -->
-        </div>
-        <div class="top-menu">
-            <ul class="nav pull-right top-menu">
-                <li><a class="logout" href="./assets/php/logout_function.php">Logout</a></li>
-            </ul>
         </div>
     </header>
 <!--header end-->
