@@ -33,14 +33,14 @@
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span>
 					<span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-				<a class="navbar-brand" href="index.html"><img src="assets/img/icon.png" style="max-height: 75px;" alt="TAHITI" /></a>
+				<a class="navbar-brand" href="index.php"><img src="assets/img/icon.png" style="max-height: 75px;" alt="TAHITI" /></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
-					<li class="active"><a href="index.html">Accueil</a></li>
-					<li><a href="index.html#news">Actualités</a></li>
-					<li><a href="index.html#about">TAHITI</a></li>
-					<li><a href="index.html#products">Notre produit</a></li>
+					<li class="active"><a href="index.php">Accueil</a></li>
+					<li><a href="news.php">Actualités</a></li>
+					<li><a href="index.php#about">TAHITI</a></li>
+					<li><a href="index.php#products">Notre produit</a></li>
 					<li><a href="board.html">Board</a></li>
 					<li><a href="recruit.html">Nous rejoindre</a></li>
 					<!--<li><a href="#contact">Nous contacter</a></li>-->
@@ -82,7 +82,8 @@
 			Ce challenge du  le comité Maxime Bavencoffe est proposé à l'ensemble
 			des acteurs de la réception de données.
         </p>-->
-        <?php echo $news_array['description'][0]; ?>
+		<?php echo substr($news_array['description'][0],0,150); ?><br>
+		<a href="news.php">Lire les news</a>.
 	</div>
 	<!-- /News -->
 
@@ -256,13 +257,13 @@
 					<div class="col-md-6 widget">
 						<div class="widget-body">
 							<p class="simplenav">
-								<a href="index.html">Accueil</a> |
-								<a href="index.html#news">Actualités</a> |
-								<a href="index.html#about">TAHITI</a> |
-								<a href="index.html#products">Nos produits</a> |
+								<a href="index.php">Accueil</a> |
+								<a href="index.php#news">Actualités</a> |
+								<a href="index.php#about">TAHITI</a> |
+								<a href="index.php#products">Nos produits</a> |
 								<a href="board.html">Board</a> |
 								<a href="recruit.html">Nous rejoindre</a> |
-								<a href="index.html#contact">Nous contacter</a> |
+								<a href="index.php#contact">Nous contacter</a> |
 								<b><a href="login.php">Sign up</a></b>
 							</p>
 						</div>

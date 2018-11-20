@@ -1,3 +1,9 @@
+<?php
+    include "./assets/php/get_news.php";
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -6,7 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 
-	<title>TAHITI - Board : Gaël Pommé</title>
+	<title>TAHITI - Actualités</title>
 
 	<link rel="shortcut icon" href="assets/img/icon.png">
 
@@ -32,10 +38,10 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
 					<li><a href="index.php">Accueil</a></li>
-					<li><a href="news.php">Actualités</a></li>
+					<li class="active"><a href="news.php">Actualités</a></li>
 					<li><a href="index.php#about">TAHITI</a></li>
 					<li><a href="index.php#products">Notre produit</a></li>
-					<li class="active"><a href="board.html">Board</a></li>
+					<li><a href="board.html">Board</a></li>
 					<li><a href="recruit.html">Nous rejoindre</a></li>
 					<!--<li><a href="#contact">Nous contacter</a></li>-->
 					<li><a class="btn" href="login.php">SIGN IN / SIGN UP</a></li>
@@ -46,46 +52,29 @@
 	</div>
 	<!-- /.navbar -->
 
-	<!-- Board -->
-	<div class="container">
-		<ul class="ul_board">
-			<li class="li_board"><a class="a_board" href=board_bchevallier.html>Baptiste Chevallier</a></li>
-			<li class="li_board"><a class="a_board" href=board_shosik.html>Stéphane Ho Sik Chuen</a></li>
-			<li class="li_board"><a class="a_board" href=board_tgoward.html>Thomas Goward</a></li>
-			<li class="li_board"><a class="a_board" href=board_mpetit.html>Mikaël Petit</a></li>
-			<li class="li_board"><a class="a_board_active" href=board_gpomme.html>Gaël Pommé</a></li>
-		</ul>
-	</div>
-	<!-- /Board-->
 
-	<!-- Gaël -->
-	<div class="container">
-		<h2 class="text-center top-space">Gaël Pommé</h2>
-		<h3 class="text-center top-space">Développeur</h3>
-		<img src="assets/img/gpomme.jpg" alt="Gaël Pommé" title="Gaël Pommé" class="float_img" /> <br>
+	<!-- News -->
+	<div class="container" id=news">
+		<br> <br>
+		<h2 class="text-center top-space">Dernière actualité</h2><br>
+		<!--<h4><i class="fa fa-github"></i>TAHITI dans le projet AWAIE</h4> <br>
 		<p class="text-muted">
-			<b>Cursus Universitaire :</b><br>
-			- Ingénieur de l'INSA Centre Val de Loire [Blois (41)].<br>
-			- Semestre Erasmus à University of South-Eastern Norway [Porsgrunn, Norvège].<br>
-			<br><br>
-
-			<b>Centres d'intérêt</b><br>
-			- Automates<br>
-			- Programmation en C<br>
-			- Musique<br>
-			- Sport<br>
-			<br><br>
-
-			<b>Projets et expériences</b>><br>
-			- Réparation d'une maquette automatisée<br>
-			- Programme de contrôle utilisant un LASER industriel<br>
-			- Contrôle d'une maquette d'un hélicoptère<br>
-			- Contrôle d'une maquette simulant un chauffage<br>
-			- Membre d'une bureau d'une harmonie locale<br>
-			<br><br>
-		</p>
-		<h2><a href="https://www.linkedin.com/in/gaelpomme/"><i class="fa fa-linkedin"></i></a></h2>
+			substr
+        </p>-->
+        <h4><i class="fa fa-github"></i>
+            <?php echo $news_array['title'][0]; ?> 
+        </h4> <br>
+		<!--<p class="text-muted">
+			Dans le cadre de la conférence ACAD, TAHITI va travailler sur le projet AWAIE.
+			Ce challenge du  le comité Maxime Bavencoffe est proposé à l'ensemble
+			des acteurs de la réception de données.
+        </p>-->
+		<?php echo substr($news_array['description'][0],0,150); ?><br>
+		<a href="news.php">Lire les news</a>.
 	</div>
+	<!-- /News -->
+
+
 
 	<footer id="footer" class="top-space">
 
@@ -144,7 +133,7 @@
 								<a href="index.php#news">Actualités</a> |
 								<a href="index.php#about">TAHITI</a> |
 								<a href="index.php#products">Nos produits</a> |
-								<a href="board_bchevallier.html">Board</a> |
+								<a href="board.html">Board</a> |
 								<a href="recruit.html">Nous rejoindre</a> |
 								<a href="index.php#contact">Nous contacter</a> |
 								<b><a href="login.php">Sign up</a></b>
