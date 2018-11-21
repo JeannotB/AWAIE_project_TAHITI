@@ -1,5 +1,26 @@
 <?php
-    include "./assets/php/get_news.php";
+	include "./assets/php/get_news.php";
+	include "./assets/php/trad_date.php";
+
+	if (isset($_GET['id_news']))
+		$news_id = $_GET['id_news'];
+	else
+		$news_id = 0;
+
+	$news_max = sizeof($news_array, COUNT_RECURSIVE) / sizeof($news_array);
+
+	if ($news_id < 0 || $news_id >= $news_max)
+		$news_id = 0;
+
+	if ($news_id == $news_max - 1)
+		$news_id_after = $news_id;
+	else
+		$news_id_after = $news_id + 1;
+
+	if ($news_id == 0)
+		$news_id_before = $news_id;
+	else
+		$news_id_before = $news_id - 1;
 ?>
 
 
@@ -53,28 +74,32 @@
 	<!-- /.navbar -->
 
 
+	<!-- Title page -->
+	<div class="jumbotron top-space container">
+		<h1 class="text-center top-space">Actualités</h1><br>
+	</div>
+	<!-- /Title page -->
+
 	<!-- News -->
-	<div class="container" id=news">
-		<br> <br>
-		<h2 class="text-center top-space">Dernière actualité</h2><br>
-		<!--<h4><i class="fa fa-github"></i>TAHITI dans le projet AWAIE</h4> <br>
-		<p class="text-muted">
-			substr
-        </p>-->
-        <h4><i class="fa fa-github"></i>
-            <?php echo $news_array['title'][0]; ?> 
-        </h4> <br>
-		<!--<p class="text-muted">
-			Dans le cadre de la conférence ACAD, TAHITI va travailler sur le projet AWAIE.
-			Ce challenge du  le comité Maxime Bavencoffe est proposé à l'ensemble
-			des acteurs de la réception de données.
-        </p>-->
-		<?php echo substr($news_array['description'][0],0,150); ?><br>
-		<a href="news.php">Lire les news</a>.
+	<div class="container">
+        <h2><i class="fa fa-send"></i>
+            <?php echo $news_array['title'][$news_id]; ?> 
+		</h2> <br>
+		<h6><i class="fa fa-calendar"></i>
+            <?php echo 'Actualité publiée le ' . trad_date($news_array['date'][$news_id]); ?> 
+		</h6> <br>
+		<?php echo $news_array['description'][$news_id]; ?><br>
 	</div>
 	<!-- /News -->
 
-
+	<!-- News path -->
+	<div class="container" id=news">
+        <h2 class="text-center top-space">
+			<a href="news.php?id_news=<?php echo $news_id_after ?>"><i class="fa fa-angle-double-left"></i></a>
+			<a href="news.php?id_news=<?php echo $news_id_before ?>"><i class="fa fa-angle-double-right"></i></a>
+		</h2> <br>
+	</div>
+	<!-- /News path -->
 
 	<footer id="footer" class="top-space">
 

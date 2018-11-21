@@ -67,23 +67,21 @@
 
 
 	<!-- News -->
-	<div class="container" id=news">
+	<div class="container" id="news">
 		<br> <br>
 		<h2 class="text-center top-space">Dernière actualité</h2><br>
-		<!--<h4><i class="fa fa-github"></i>TAHITI dans le projet AWAIE</h4> <br>
-		<p class="text-muted">
-			substr
-        </p>-->
-        <h4><i class="fa fa-github"></i>
+        <h4><i class="fa fa-send"></i>
             <?php echo $news_array['title'][0]; ?> 
-        </h4> <br>
-		<!--<p class="text-muted">
-			Dans le cadre de la conférence ACAD, TAHITI va travailler sur le projet AWAIE.
-			Ce challenge du  le comité Maxime Bavencoffe est proposé à l'ensemble
-			des acteurs de la réception de données.
-        </p>-->
-		<?php echo substr($news_array['description'][0],0,150); ?><br>
-		<a href="news.php">Lire les news</a>.
+		</h4> <br>
+		<p class="text-muted">
+			<?php 
+				echo substr($news_array['description'][0],0,200); 
+				if (strlen($news_array['description'][0])>200) {
+					echo '...';
+				}
+			?> <br>
+			<a href="news.php">Lire l'actualité</a>.
+		</p>
 	</div>
 	<!-- /News -->
 
@@ -122,62 +120,6 @@
 		</p>
 	</div>
 	<!-- /Products-->
-
-	<!-- About Us
-	<div class="jumbotron top-space container" id="about-us">
-		<h2 class="text-center top-space">Board</h2>
-
-		<div class="row">
-			<div class="col-md-12 col-sm-12 highlight">
-				<div class="h-caption">
-					<h4><i class="fa fa-cogs"></i>Développeur Pilote<br>
-					Baptiste Chevallier</h4>
-				</div>
-				<div class="h-body text-center">
-					<p>Notre leader, notre guide. Seul Lui a le pouvoir de décider. Seul Lui a réponse à tout.<br>
-					Aussi appelé Dieu, El Monstro, Le Phénomène, le Mbappé du Web.</p>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 highlight">
-				<div class="h-caption">
-					<h4><i class="fa fa-github"></i>Développeur<br>
-					Stéphane Ho Sik Chuen</h4>
-				</div>
-				<div class="h-body text-center">
-					<p>Vainqueur de Hackathons, Youtuber de talent (3 vues sur sa vidéo Tuto Git pour les Nuls)
-					</p>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 highlight">
-				<div class="h-caption">
-					<h4><i class="fa fa-html5"></i>Développeur<br>
-					Thomas Goward</h4>
-				</div>
-				<div class="h-body text-center">
-					<p>Vu qu'on code qu'en anglais, il est parfait !</p>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 highlight">
-				<div class="h-caption">
-					<h4><i class="fa fa-database"></i>Développeur<br>
-					Mickaël Petit</h4>
-				</div>
-				<div class="h-body text-center">
-					<p>Aussi grand que son robot...</p>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 highlight">
-				<div class="h-caption">
-					<h4><i class="fa fa-desktop"></i>Développeur<br>
-						Gaël Pommé</h4>
-				</div>
-				<div class="h-body text-center">
-					<p>A partir de 13 lignes de code, il est perdu.</p>
-				</div>
-			</div>
-		</div> <!-- /row  -->
-	<!-- </div>
-	/About Us -->
 
 	<!-- Contact -->
 	<div class="container text-center container" id="contact">
