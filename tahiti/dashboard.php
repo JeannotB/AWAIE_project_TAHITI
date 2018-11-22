@@ -8,17 +8,19 @@
     if(isset($_GET['id_company']))
         $company_id = $_GET['id_company'];
     else
-        $company_id = 1;
+        $company_id = null;
     //Get All captors GPS
     $gps_lat = [];
     $gps_long = [];
     $ref_id = [];
-    $sql_get_gps = "SELECT * FROM produits WHERE id_entreprise=$company_id";
+    $ref_name = [];
+    $sql_get_gps = "SELECT * FROM produits JOIN entreprise WHERE produits.id_entreprise=entreprise.company_id AND md5(entreprise.company_id)='".$company_id."'";
     $result = mysqli_query($sqlconnect, $sql_get_gps);
     while ($row = mysqli_fetch_assoc($result)) {
         $gps_lat[] = $row['GPS_lat'];
         $gps_long[] = $row['GPS_long'];
         $ref_id[] = md5($row['ref_produit']);
+        $ref_name[] = $row['ref_produit'];
     }
 
 ?>
@@ -28,8 +30,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="refresh" content="30">
 
-        <title>TAHITI - AWAIE -- Company</title>
+        <title>TAHITI - AWAIE -- Dashboard</title>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -68,7 +71,7 @@
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
         <?php
-            include "./assets/html/menu.html";
+            include "./assets/html/menu.php";
         ?>
         
         <!-- **********************************************************************************************************************************************************
@@ -80,7 +83,6 @@
                 <div class="row">
                     <div class="col-lg-9 main-chart">                  
                             <!--loop display graph of all company's sensors -->
-                            <!-- CHOICE 2 -->
                                 <?php
                                     for($i=0; $i < count($ref_id); $i++) {
                                         $sql_get_temp_graph2 = "SELECT temperature,date,ref_produit FROM capteur JOIN produits WHERE capteur.sonde_id=produits.id_produit AND md5(produits.ref_produit)='".$ref_id[$i]."' ORDER BY capteur.date DESC LIMIT 12";
@@ -143,7 +145,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $sql_get_temp = "SELECT * FROM alertes JOIN produits, entreprise WHERE alertes.sonde_id=produits.id_produit AND produits.id_entreprise=entreprise.company_id AND entreprise.company_id=$company_id AND alertes.is_display=1 ORDER BY time DESC LIMIT 5";
+                                        $sql_get_temp = "SELECT * FROM alertes JOIN produits, entreprise WHERE alertes.sonde_id=produits.id_produit AND produits.id_entreprise=entreprise.company_id AND md5(entreprise.Nom)='".$company_id."' AND alertes.is_display=1 ORDER BY time DESC LIMIT 5";
                                         $result = mysqli_query($sqlconnect, $sql_get_temp);
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             echo "<tr>";
@@ -213,7 +215,7 @@
         //Map
         var gps_lat = <?php echo json_encode($gps_lat); ?>;
         var gps_long = <?php echo json_encode($gps_long); ?>;
-        var ref_id = <?php echo json_encode($ref_id); ?>;
+        var ref_id = <?php echo json_encode($ref_name); ?>;
         
         var lat_moy = mean(gps_lat);
         var long_moy = mean(gps_long);

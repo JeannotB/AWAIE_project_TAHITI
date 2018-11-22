@@ -65,9 +65,12 @@
             //Password confirmation
             if(isset($_POST['password_confirm']) and $_POST['password_confirm'] != "")
             {
-                if(md5($_POST['password_confirm']) == md5($_POST['password'])) //password and password_confirm match
+                $password_hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
+                $password_confirm_hash = password_hash($_POST['password_confirm'], PASSWORD_BCRYPT);
+
+                if(password_verify($_POST['password'], $password_confirm_hash))
                 {
-                    $register['password'] = md5($_POST['password']); //encrypt password
+                    $register['password'] = $password_hash;
                     $errorBool &= true;
                 }
                 else

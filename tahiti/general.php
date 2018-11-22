@@ -41,7 +41,7 @@
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
         <?php
-            include "./assets/html/menu.html";
+            include "./assets/html/menu.php";
         ?>
         
         <!-- **********************************************************************************************************************************************************
@@ -102,7 +102,7 @@
                             </div>      				
                         </div><!-- /showback -->
                         
-                        <! -- ANIMATED PROGRESS BARS -->
+                        <!-- ANIMATED PROGRESS BARS -->
                         <div class="showback">
                             <h4><i class="fa fa-angle-right"></i> Animated Progress Bars</h4>
                             <div class="progress progress-striped active">
@@ -112,7 +112,7 @@
                             </div>
                         </div><!-- /showback -->
                         
-                        <! -- MODALS -->
+                        <!-- MODALS -->
                         <div class="showback">
                             <h4><i class="fa fa-angle-right"></i> Modal Example</h4>
                             <!-- Button trigger modal -->

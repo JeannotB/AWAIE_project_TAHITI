@@ -25,6 +25,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="refresh" content="30">
 
 
 
@@ -67,7 +68,7 @@
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
         <?php
-            include "./assets/html/menu.html";
+            include "./assets/html/menu.php";
         ?>
         
         <!-- **********************************************************************************************************************************************************
@@ -77,7 +78,10 @@
         <section id="main-content">
             <section class="wrapper site-min-height">
                 <h3><i class="fa fa-map-marker"></i> Capteur de la sonde <?php echo $sonde_name;?></h3>
-                <p><a href="assets/php/excel_file.php?sonde=<?php echo $sonde;?>&filename=<?php echo $sonde_name;?>">[Download Temperature]</a></p>
+                <p>
+                    <a href=<?php echo 'capteurs_settings.php?sonde='.$_GET['sonde']; ?>><i class="fa fa-cog"></i> Settings</a> <br/>
+                    <a href="assets/php/excel_file.php?sonde=<?php echo $sonde;?>&filename=<?php echo $sonde_name;?>">[Download Temperature]</a>
+                </p>
                 <div class="row mt">
                     <div class="col-md-4 mt">
                         <div class="content-panel" style="height: 395.083px;">

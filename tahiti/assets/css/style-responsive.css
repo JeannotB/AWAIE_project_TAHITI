@@ -4,6 +4,16 @@
         margin-bottom: 40px;
     }
 
+    /* logo */
+
+    a.logo {
+        width: 600px;
+        height: 40px;
+        background: url("./../img/logo_text_1.png") no-repeat;
+        background-size: 600px auto;
+        background-position: left 10px;
+    }
+
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
@@ -12,6 +22,17 @@
     .custom-bar-chart {
         margin-bottom: 40px;
     }
+
+    /* logo */
+
+    a.logo {
+        width: 100px;
+        height: 30px;
+        background: url("./../img/logo_text_2.png") no-repeat;
+        background-size: auto 15px;
+        background-position: left 7px;
+    }
+    
 
     /*chat room*/
 
@@ -23,6 +44,17 @@
     .header {
         position: absolute;
     }
+
+    /* logo */
+
+    a.logo {
+        width: 100px;
+        height: 30px;
+        background: url("./../img/logo_text_2.png") no-repeat;
+        background-size: auto 15px;
+        background-position: left 7px;
+    }
+
 
     /*sidebar*/
 

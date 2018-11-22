@@ -1,5 +1,5 @@
 <?php
-header( 'content-type: text/html; charset=utf-8' ); //connection with ut8 charset
+header( 'content-type: text/html; charset=utf-8' ); //connection with utf8 charset
 
 // Create connection
 	//Local
@@ -8,7 +8,7 @@ header( 'content-type: text/html; charset=utf-8' ); //connection with ut8 charse
 		//$sqlconnect = mysqli_connect('', '', '', 'piezo','');		
 									//name site		//userID	//pw	//database		//Port
 
-mysqli_set_charset($sqlconnect,"utf8"); //connection with ut8 charset
+mysqli_set_charset($sqlconnect,"utf8"); //connection with utf8 charset
 // Check connection
 if (!$sqlconnect) {
     die("Connection failed: " . mysqli_connect_error());
