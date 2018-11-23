@@ -7,7 +7,7 @@
 	else
 		$news_id = 0;
 
-	$news_max = sizeof($news_array, COUNT_RECURSIVE) / sizeof($news_array);
+	$news_max = count($news_array['title']);
 
 	if ($news_id < 0 || $news_id >= $news_max)
 		$news_id = 0;
