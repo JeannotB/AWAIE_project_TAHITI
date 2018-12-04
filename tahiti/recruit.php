@@ -1,3 +1,30 @@
+<?php
+	include "./assets/php/get_news.php";
+	include "./assets/php/trad_date.php";
+
+	if (isset($_GET['id_news']))
+		$news_id = $_GET['id_news'];
+	else
+		$news_id = 0;
+
+	$news_max = count($news_array['title']);
+
+	if ($news_id < 0 || $news_id >= $news_max)
+		$news_id = 0;
+
+	if ($news_id == $news_max - 1)
+		$news_id_after = $news_id;
+	else
+		$news_id_after = $news_id + 1;
+
+	if ($news_id == 0)
+		$news_id_before = $news_id;
+	else
+		$news_id_before = $news_id - 1;
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -6,7 +33,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 
-	<title>TAHITI - Board : Baptiste Chevallier</title>
+	<title>TAHITI - Recrutement</title>
 
 	<link rel="shortcut icon" href="assets/img/icon.png">
 
@@ -32,11 +59,11 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
 					<li><a href="index.php">Accueil</a></li>
-					<li><a href="news.php">Actualités</a></li>
+					<li class="active"><a href="news.php">Actualités</a></li>
 					<li><a href="index.php#about">TAHITI</a></li>
 					<li><a href="index.php#products">Notre produit</a></li>
-					<li class="active"><a href="board.html">Board</a></li>
-					<li><a href="recruit.php">Nous rejoindre</a></li>
+					<li><a href="board.html">Board</a></li>
+					<li><a href="recruit.html">Nous rejoindre</a></li>
 					<!--<li><a href="#contact">Nous contacter</a></li>-->
 					<li><a class="btn" href="login.php">SIGN IN / SIGN UP</a></li>
 				</ul>
@@ -46,42 +73,33 @@
 	</div>
 	<!-- /.navbar -->
 
-	<!-- Board -->
-	<div class="container">
-		<ul class="ul_board">
-			<li class="li_board"><a class="a_board_active" href=board_bchevallier.html>Baptiste Chevallier</a></li>
-			<li class="li_board"><a class="a_board" href=board_shosik.html>Stéphane Ho Sik Chuen</a></li>
-			<li class="li_board"><a class="a_board" href=board_tgoward.html>Thomas Goward</a></li>
-			<li class="li_board"><a class="a_board" href=board_mpetit.html>Mikaël Petit</a></li>
-			<li class="li_board"><a class="a_board" href=board_gpomme.html>Gaël Pommé</a></li>
-		</ul>
-	</div>
-	<!-- /Board-->
 
-	<!-- Baptiste -->
-	<div class="container">
-		<h2 class="text-center top-space">Baptiste Chevallier</h2>
-		<h3 class="text-center top-space">Développeur pilote</h3>
-		<img src="assets/img/bchevallier.jpg" alt="Baptiste Chevallier" title="Baptiste Chevallier" class="float_img" /> <br>
-		<p class="text-muted">
-			<h2>Cursus universitaire</h2><br>
-			- Elève ingénieur de l'INSA Centre Val de Loire [Blois (41)].<br>
-			- Semestre Erasmus à Univerisity Polytechnic of Bucharest [Bucharest, Roumanie].<br>
-			<br>
-			<h2>Centres d'intérêt</h2><br>
-			- Sciences et High-Tech<br>
-			- Automatisme<br>
-			- Dévelepomment Web<br>
-			- Voyage<br>
-			- Sport<br>
-			<br>
-			<h2>Projets et expériences</h2><br>
-			- Création de plusieurs sites internet<br>
-			- Conception d'outils logiciels pour une production industrielle<br>
-			<br>
-		</p>
-		<h2><a href="https://www.linkedin.com/in/baptiste-chevallier-7b5122158/"><i class="fa fa-linkedin"></i></a></h2>
+	<!-- Title page -->
+	<div class="jumbotron top-space container">
+		<h1 class="text-center top-space">Actualités</h1><br>
 	</div>
+	<!-- /Title page -->
+
+	<!-- News -->
+	<div class="container">
+        <h2><i class="fa fa-send"></i>
+            <?php echo $news_array['title'][$news_id]; ?> 
+		</h2> <br>
+		<h6><i class="fa fa-calendar"></i>
+            <?php echo 'Actualité publiée le ' . trad_date($news_array['date'][$news_id]); ?> 
+		</h6> <br>
+		<?php echo $news_array['description'][$news_id]; ?><br>
+	</div>
+	<!-- /News -->
+
+	<!-- News path -->
+	<div class="container" id=news">
+        <h2 class="text-center top-space">
+			<a href="news.php?id_news=<?php echo $news_id_after ?>"><i class="fa fa-angle-double-left"></i></a>
+			<a href="news.php?id_news=<?php echo $news_id_before ?>"><i class="fa fa-angle-double-right"></i></a>
+		</h2> <br>
+	</div>
+	<!-- /News path -->
 
 	<footer id="footer" class="top-space">
 
@@ -140,7 +158,7 @@
 								<a href="index.php#news">Actualités</a> |
 								<a href="index.php#about">TAHITI</a> |
 								<a href="index.php#products">Nos produits</a> |
-								<a href="board_bchevallier.html">Board</a> |
+								<a href="board.html">Board</a> |
 								<a href="recruit.html">Nous rejoindre</a> |
 								<a href="index.php#contact">Nous contacter</a> |
 								<b><a href="login.php">Sign up</a></b>

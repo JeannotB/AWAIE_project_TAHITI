@@ -42,7 +42,7 @@
 					<li><a href="index.php#about">TAHITI</a></li>
 					<li><a href="index.php#products">Notre produit</a></li>
 					<li><a href="board.html">Board</a></li>
-					<li><a href="recruit.html">Nous rejoindre</a></li>
+					<li><a href="recruit.php">Nous rejoindre</a></li>
 					<!--<li><a href="#contact">Nous contacter</a></li>-->
 					<li><a class="btn" href="login.php">SIGN IN / SIGN UP</a></li>
 				</ul>
