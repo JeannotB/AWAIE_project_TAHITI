@@ -59,11 +59,11 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
 					<li><a href="index.php">Accueil</a></li>
-					<li class="active"><a href="news.php">Actualités</a></li>
+					<li><a href="news.php">Actualités</a></li>
 					<li><a href="index.php#about">TAHITI</a></li>
 					<li><a href="index.php#products">Notre produit</a></li>
 					<li><a href="board.html">Board</a></li>
-					<li><a href="recruit.html">Nous rejoindre</a></li>
+					<li class="active"><a href="recruit.html">Nous rejoindre</a></li>
 					<!--<li><a href="#contact">Nous contacter</a></li>-->
 					<li><a class="btn" href="login.php">SIGN IN / SIGN UP</a></li>
 				</ul>
@@ -76,30 +76,30 @@
 
 	<!-- Title page -->
 	<div class="jumbotron top-space container">
-		<h1 class="text-center top-space">Actualités</h1><br>
+		<h1 class="text-center top-space">Offres</h1><br>
 	</div>
 	<!-- /Title page -->
 
-	<!-- News -->
+	<!-- Offer -->
 	<div class="container">
-        <h2><i class="fa fa-send"></i>
+        <h4><i class="fa fa-paper-plane"></i>
             <?php echo $news_array['title'][$news_id]; ?> 
-		</h2> <br>
+		</h4> <br>
 		<h6><i class="fa fa-calendar"></i>
             <?php echo 'Actualité publiée le ' . trad_date($news_array['date'][$news_id]); ?> 
 		</h6> <br>
 		<?php echo $news_array['description'][$news_id]; ?><br>
 	</div>
-	<!-- /News -->
+	<!-- /Offer -->
 
-	<!-- News path -->
+	<!-- News path -
 	<div class="container" id=news">
         <h2 class="text-center top-space">
 			<a href="news.php?id_news=<?php echo $news_id_after ?>"><i class="fa fa-angle-double-left"></i></a>
 			<a href="news.php?id_news=<?php echo $news_id_before ?>"><i class="fa fa-angle-double-right"></i></a>
 		</h2> <br>
 	</div>
-	<!-- /News path -->
+	-- /News path -->
 
 	<footer id="footer" class="top-space">
 
