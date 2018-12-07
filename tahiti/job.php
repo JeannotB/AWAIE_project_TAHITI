@@ -4,22 +4,10 @@
 
 	if (isset($_GET['id_job']))
 		$job_id = $_GET['id_job'];
-	else
-		$job_id = 0;
+	else {
+		header('Location: recruit.php');
+		exit(); }
 
-	$job_max = count($job_array['title']);
-
-	if ($job_id < 0 || $job_id >= $job_max)
-		$job_id = 0;
-
-	$number_offers_displayed = 3;
-
-	$first_job_id = (int)($job_id/$number_offers_displayed);
-	
-	$last_job_id = $first_job_id + $number_offers_displayed;
-
-	if ($last_job_id > $job_max)
-		$last_job_id = $job_max;
 ?>
 
 
@@ -75,7 +63,15 @@
 
 	<!-- Title page -->
 	<div class="jumbotron top-space container">
-		<h1 class="text-center top-space">Offres</h1><br>
+		<h1 class="text-center top-space">
+			<?php if ($job_array['type'][$job_id] == 0) {
+					echo '[CDI]  ';
+				} elseif ($job_array['type'][$job_id] == 1) {
+					echo '[CDD]  ';
+				} else {
+					echo '[STAGE]  ';
+				}
+				echo $job_array['title'][$job_id]; ?></h1><br>
 	</div>
 	<!-- /Title page -->
 
@@ -83,65 +79,44 @@
 
 
 	<!-- Offer -->
-	<?php
-	for ($ite = $first_job_id; $ite < $last_job_id; $ite++) { ?>
+	<div class="container">
+
+		<h3 class="text-center top-space">
+		<i class="fa fa-calendar"></i> 
+			<?php echo 'Offre publiée le ' . trad_date($job_array['date_offer'][$job_id]); ?> <br> <br>
 		
-		<div class="container">
-			<h4><i class="fa fa-paper-plane"></i>
-				<?php if ($job_array['type'][$ite] == 0) {
-					echo '[CDI]  ';
-				} elseif ($job_array['type'][$ite] == 1) {
-					echo '[CDD]  ';
-				} else {
-					echo '[STAGE]  ';
-				}
-				echo $job_array['title'][$ite]; ?> 
-			</h4> <br>
+		<i class="fa fa-bullseye"></i> 
+			<?php echo $job_array['localisation'][$job_id]; ?> <br> <br>
 
-			<h5>
-			<i class="fa fa-calendar"></i> 
-				<?php echo 'Offre publiée le ' . trad_date($job_array['date_offer'][$ite]); ?> &nbsp &nbsp &nbsp
-			
-			<i class="fa fa-bullseye"></i> 
-				<?php echo $job_array['localisation'][$ite]; ?> &nbsp &nbsp &nbsp
+		<i class="fa fa-calendar-check-o"></i> 
+		<?php
+			/*if ($job_array['date_takeout'][$ite] <= getdate()){
+				echo 'Prise de fonction immédiate';
+			} else {*/
+				echo 'Prise de fonction : ' . trad_date($job_array['date_takeout'][$job_id]);
+			/*}; */?> <br>
+		</h3> 
 
-			<i class="fa fa-calendar-check-o"></i> 
-				<?php
-				/*if ($job_array['date_takeout'][$ite] <= getdate()){
-					echo 'Prise de fonction immédiate';
-				} else {*/
-					echo 'Prise de fonction : ' . trad_date($job_array['date_takeout'][$ite]);
-				/*}; */?>&nbsp &nbsp &nbsp
-			</h5> 
-
-			<h6> <i class="fa fa-briefcase"></i> 
-				<i><?php echo 'Offre provenant de ' . $job_array['author'][$ite]; ?></i>
-			</h6>
-			
-			<?php 
-				echo substr($job_array['description'][$ite],0,500); 
-				if (strlen($job_array['description'][$ite])>500) {
-					echo '...';}
-			?><br>
-			<h5 class="text-center top-space">
-				<a href="job.php?id_job=<?php echo $ite ?>"><i class="fa fa-info"></i> Plus d'info </a>
-
-				<?php for ($i = 0; $i < 30; $i++) {?> &nbsp <?php } ?>
-				<a href="candidate.php?id_job=<?php echo $ite ?>"><i class="fa fa-pencil-square-o"></i> Postuler </a>
-			</h5>
-	</div> <br> <br> <br> <br> <?php } ?>
+		<h4 class="text-center top-space"> <i class="fa fa-briefcase"></i> 
+			<i><?php echo 'Offre provenant de ' . $job_array['author'][$job_id]; ?></i>
+		</h4> <br> <br> <br>
+		
+		<?php 
+			echo $job_array['description'][$job_id]; 
+		?><br>
+	
+		<h4 class="text-center top-space"> <a href="candidate.php?id_job=<?php echo $job_id ?>"><i class="fa fa-pencil-square-o"></i> Postuler </a>
+		</h4>
+	</div>
 	<!-- /Offer -->
 
-	<!-- Offers path -->
+	<!-- Return path -->
 	<div class="container">
-        <h2 class="text-center top-space">
-			<?php if ($first_job_id != 0) {?> 
-				<a href="recruit.php?id_job=<?php echo $first_job_id?>"><i class="fa fa-angle-double-left"></i></a> <?php } ?>
-			<?php if (($last_job_id) != $job_max) { ?>
-				<a href="recruit.php?id_job=<?php echo $last_job_id?>"><i class="fa fa-angle-double-right"></i></a> <?php } ?>
-		</h2> <br>
+        <h4 class="text-center top-space">
+			<a href="recruit.php?id_job=<?php echo $job_id?>"><i class="fa fa-angle-double-left"></i>&nbsp &nbsp &nbspRetour aux offres</a>
+		</h4> <br>
 	</div>
-	<!-- /Offers path -->
+	<!-- /News path -->
 
 
 	<footer id="footer" class="top-space">
