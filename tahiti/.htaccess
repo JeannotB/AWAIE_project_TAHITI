@@ -1,0 +1,8 @@
+Options +FollowSymlinks
+
+RewriteEngine on
+
+#------------------VUES-------------------------------------------
+RewriteRule ^$ ./vues/index.html [L]
+
+RewriteRule ^login$ ./vues/login.php [L]
