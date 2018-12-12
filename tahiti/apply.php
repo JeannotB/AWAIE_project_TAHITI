@@ -1,26 +1,25 @@
 <?php
-	include "./assets/php/get_news.php";
+	include "./assets/php/get_offers.php";
 	include "./assets/php/trad_date.php";
 
-	if (isset($_GET['id_news']))
-		$news_id = $_GET['id_news'];
+	if (isset($_GET['id_job']))
+		$job_id = $_GET['id_job'];
 	else
-		$news_id = 0;
+		$job_id = 0;
 
-	$news_max = count($news_array['title']);
+	$job_max = count($job_array['title']);
 
-	if ($news_id < 0 || $news_id >= $news_max)
-		$news_id = 0;
+	if ($job_id < 0 || $job_id >= $job_max)
+		$job_id = 0;
 
-	if ($news_id == $news_max - 1)
-		$news_id_after = $news_id;
-	else
-		$news_id_after = $news_id + 1;
+	$number_offers_displayed = 3;
 
-	if ($news_id == 0)
-		$news_id_before = $news_id;
-	else
-		$news_id_before = $news_id - 1;
+	$first_job_id = (int)($job_id/$number_offers_displayed);
+	
+	$last_job_id = $first_job_id + $number_offers_displayed;
+
+	if ($last_job_id > $job_max)
+		$last_job_id = $job_max;
 ?>
 
 
@@ -33,7 +32,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 
-	<title>TAHITI - Actualités</title>
+	<title>TAHITI - Candidature</title>
 
 	<link rel="shortcut icon" href="assets/img/icon.png">
 
@@ -59,11 +58,11 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
 					<li><a href="index.php">Accueil</a></li>
-					<li class="active"><a href="news.php">Actualités</a></li>
+					<li><a href="news.php">Actualités</a></li>
 					<li><a href="index.php#about">TAHITI</a></li>
 					<li><a href="index.php#products">Notre produit</a></li>
 					<li><a href="board.html">Board</a></li>
-					<li><a href="recruit.php">Nous rejoindre</a></li>
+					<li class="active"><a href="recruit.php">Nous rejoindre</a></li>
 					<!--<li><a href="#contact">Nous contacter</a></li>-->
 					<li><a class="btn" href="login.php">SIGN IN / SIGN UP</a></li>
 				</ul>
@@ -76,30 +75,26 @@
 
 	<!-- Title page -->
 	<div class="jumbotron top-space container">
-		<h1 class="text-center top-space">Actualités</h1><br>
+		<h1 class="text-center top-space">Candidature</h1><br>
 	</div>
 	<!-- /Title page -->
 
-	<!-- News -->
+	
+	<!-- Application -->
 	<div class="container">
-        <h2><i class="fa fa-send"></i>
-            <?php echo $news_array['title'][$news_id]; ?> 
-		</h2> <br>
-		<h6><i class="fa fa-calendar"></i>
-            <?php echo 'Actualité publiée le ' . trad_date($news_array['date'][$news_id]); ?> 
-		</h6> <br>
-		<?php echo $news_array['description'][$news_id]; ?><br>
-	</div>
-	<!-- /News -->
+		<form method="post" action =#>
+			<p class="text-center top-space">Votre nom : 
+				<input type="text" name="nom"> <br><br>
+				Votre prénom : 
+				<input type="text" name="prenom"> <br><br>
+				Votre candidature :
+				<textarea  name="candidature"></textarea><br></p>
 
-	<!-- News path -->
-	<div class="container">
-        <h2 class="text-center top-space">
-			<a href="news.php?id_news=<?php echo $news_id_after ?>"><i class="fa fa-angle-double-left"></i></a>
-			<a href="news.php?id_news=<?php echo $news_id_before ?>"><i class="fa fa-angle-double-right"></i></a>
-		</h2> <br>
+			<p class="text-center top-space"><input type="submit" value="Envoyer"></p>
+		</form>
 	</div>
-	<!-- /News path -->
+	<!-- /Application -->
+
 
 	<footer id="footer" class="top-space">
 
