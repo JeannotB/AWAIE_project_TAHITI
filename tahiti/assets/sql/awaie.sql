@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 23 nov. 2018 à 13:51
+-- Généré le :  mer. 12 déc. 2018 à 09:53
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -969,7 +969,7 @@ CREATE TABLE IF NOT EXISTS `news` (
 --
 
 INSERT INTO `news` (`news_id`, `title`, `is_online`, `date`, `description`) VALUES
-(1, 'Titre test', 1, '2018-11-20 13:34:11', '<p>Description test <br>\r\n<a href=\"http://google.fr\" target=\"_blank\">lien</a> Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test Description test \r\n</p>'),
+(1, 'Bienvenue sur notre nouveau site web !', 1, '2018-11-20 13:34:11', '<p>Bienvenue sur notre nouveau site web !</p>'),
 (2, 'TAHITI dans le projet AWAIE', 1, '2018-11-20 14:16:36', 'Dans le cadre de la conférence ACAD, TAHITI va travailler sur le projet AWAIE. Ce challenge du comité Maxime Bavencoffe est proposé à l\'ensemble des acteurs de la réception de données.');
 
 -- --------------------------------------------------------
@@ -1003,6 +1003,39 @@ INSERT INTO `produits` (`id_produit`, `ref_produit`, `GPS_lat`, `GPS_long`, `ale
 (5, 'MF_02', 47.596515, 1.328898, 25, 20, 2),
 (6, 'MF_01', 43.577802, 1.377438, 25, 20, 2);
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `recruit`
+--
+
+DROP TABLE IF EXISTS `recruit`;
+CREATE TABLE IF NOT EXISTS `recruit` (
+  `offer_id` int(11) NOT NULL AUTO_INCREMENT,
+  `author_id` int(11) NOT NULL DEFAULT '-1',
+  `title` longtext CHARACTER SET utf8 NOT NULL,
+  `is_online` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'true = online / false = not online',
+  `date_offer` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `description` longtext CHARACTER SET utf8 NOT NULL,
+  `type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 = Permanent / 1 = Non-permanent / 2 = Internship',
+  `localisation` tinytext CHARACTER SET utf8 NOT NULL,
+  `date_takeout` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`offer_id`),
+  KEY `author_is_member` (`author_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `recruit`
+--
+
+INSERT INTO `recruit` (`offer_id`, `author_id`, `title`, `is_online`, `date_offer`, `description`, `type`, `localisation`, `date_takeout`) VALUES
+(2, 4, 'Test offre première offre', 1, '2018-12-04 08:13:43', 'Test description première offre', 0, 'Blois', '2018-12-04 08:13:43'),
+(3, 4, 'Test offre seconde offre', 1, '2018-12-04 08:13:43', 'Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre  Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre  Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre ', 1, 'Bourges', '2019-02-07 08:13:43'),
+(4, 4, 'Test offre troisième offre', 1, '2018-12-04 08:13:43', 'Blablabla', 2, 'Valençay', '2018-12-04 08:13:43'),
+(5, 4, 'Test offre première offre', 1, '2018-12-04 08:13:43', 'Test description première offre', 0, 'Blois', '2018-12-04 08:13:43'),
+(6, 4, 'Test offre seconde offre', 1, '2018-12-04 08:13:43', 'Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre  Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre  Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre ', 1, 'Bourges', '2019-02-07 08:13:43'),
+(7, 4, 'Test offre troisième offre', 1, '2018-12-04 08:13:43', 'Blablabla', 2, 'Valençay', '2018-12-04 08:13:43');
+
 --
 -- Contraintes pour les tables déchargées
 --
@@ -1030,6 +1063,12 @@ ALTER TABLE `members`
 --
 ALTER TABLE `produits`
   ADD CONSTRAINT `produits_ibfk_1` FOREIGN KEY (`id_entreprise`) REFERENCES `entreprise` (`company_id`) ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `recruit`
+--
+ALTER TABLE `recruit`
+  ADD CONSTRAINT `author_is_member` FOREIGN KEY (`author_id`) REFERENCES `members` (`member_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
