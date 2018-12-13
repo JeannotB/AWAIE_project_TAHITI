@@ -83,20 +83,17 @@
                  <table class="table table-hover">
                      <thead>
                          <tr>
-                             <th>Sonde</th>
-                             <th>Date</th>
                              <th>Temp</th>
                          </tr>
                      </thead>
                      <tbody>
                          <?php
-                             $sql_get_temp = "SELECT * FROM alertes JOIN produits, entreprise ";
+                             $sql_get_temp = "SELECT * FROM `entreprise`";
                              $result = mysqli_query($sqlconnect, $sql_get_temp);
                              while ($row = mysqli_fetch_assoc($result)) {
                                  echo "<tr>";
-                                 echo "<td><a href='capteurs_temp.php?sonde=".md5($row['ref_produit'])."'>".$row['ref_produit']."</a></td>";
-                                 echo "<td>".$row['time']."</td>";
-                                 echo "<td>".$row['temp']."</td>";
+                                 echo "<td>".$row['Nom']."</td>";
+                             
                                  echo "</tr>";
                              }
                          ?>
