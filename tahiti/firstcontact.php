@@ -1,8 +1,5 @@
 <?php require "testmail.php"; ?>
-<?php
 
-
- ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
