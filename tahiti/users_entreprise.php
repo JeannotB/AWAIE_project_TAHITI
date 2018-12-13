@@ -1,3 +1,28 @@
+<?php
+	session_start();
+	
+	//Need DataBase connection
+    require './assets/php/db_connection.php';
+    
+    //get company id
+    if(isset($_GET['id_company']))
+        $company_id = $_GET['id_company'];
+    else
+        $company_id = 1;
+    //Get All captors GPS
+    $gps_lat = [];
+    $gps_long = [];
+    $ref_id = [];
+    $sql_get_gps = "SELECT * FROM produits WHERE id_entreprise=$company_id";
+    $result = mysqli_query($sqlconnect, $sql_get_gps);
+    while ($row = mysqli_fetch_assoc($result)) {
+        $gps_lat[] = $row['GPS_lat'];
+        $gps_long[] = $row['GPS_long'];
+        $ref_id[] = md5($row['ref_produit']);
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -50,6 +75,34 @@
                 <div class="row mt">
                     <div class="col-lg-12">
                     <p>Place your content here.</p>
+                    
+
+             <div class="col-lg-3 ds">
+             <h3>entreprises</h3>
+             <div class="desc">
+                 <table class="table table-hover">
+                     <thead>
+                         <tr>
+                             <th>Sonde</th>
+                             <th>Date</th>
+                             <th>Temp</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <?php
+                             $sql_get_temp = "SELECT * FROM alertes JOIN produits, entreprise ";
+                             $result = mysqli_query($sqlconnect, $sql_get_temp);
+                             while ($row = mysqli_fetch_assoc($result)) {
+                                 echo "<tr>";
+                                 echo "<td><a href='capteurs_temp.php?sonde=".md5($row['ref_produit'])."'>".$row['ref_produit']."</a></td>";
+                                 echo "<td>".$row['time']."</td>";
+                                 echo "<td>".$row['temp']."</td>";
+                                 echo "</tr>";
+                             }
+                         ?>
+                     </tbody>
+                 </table>                        
+             </div>
                     </div>
                 </div>
                 
