@@ -1,5 +1,5 @@
 <!-- TITLE -->
-<?php $title = "TAHITI - Baptiste Chevallier";?>
+<?php $title = "TAHITI - Mikaël Petit";?>
 <!-- CONTENT -->
 <?php ob_start();?>
 
@@ -21,7 +21,7 @@
 		<h3 class="text-center top-space">Développeur</h3>
 		<img src="assets/img/mpetit.jpg" alt="Mikaël Petit" title="Mikaël Petit" class="float_img" /> <br>
 		<p class="text-muted">
-			<h2>Cursurs universitaire</h2><br>
+			<h2>Cursus universitaire</h2><br>
 			- Elève ingénieur de l'INSA Centre Val de Loire [Blois (41)].<br>
 			- Classe préparatoire en Physique - Technologie au lycée A.R.Lesage [Vannes (56)]<br>
 			<!-- Baccalauréat Scientifique spécialité Mathématique au lycée Marcel Gambier [Lisieux (14)]-->

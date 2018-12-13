@@ -45,7 +45,7 @@
 				}
 				else
 					$company_path = "dashboard.php?id_company=".md5($row['id_company']);
-				header('Location: '.$company_path.'');
+				header('Location: ./vues/'.$company_path.'');
 			}
 			else
 				$error = "Account Invalid, please verify your email or your password";

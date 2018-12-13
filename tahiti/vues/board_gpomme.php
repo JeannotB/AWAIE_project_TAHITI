@@ -1,5 +1,5 @@
 <!-- TITLE -->
-<?php $title = "TAHITI - Baptiste Chevallier";?>
+<?php $title = "TAHITI - Gaël Pommé";?>
 <!-- CONTENT -->
 <?php ob_start();?>
 

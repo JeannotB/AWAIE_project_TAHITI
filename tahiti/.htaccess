@@ -12,7 +12,7 @@ RewriteRule ^news$ ./vues/news.php [L]
 RewriteRule ^news-([0-9]+)$   ./vues/news.php?id_news=$1 [L]
 
 RewriteRule ^board$ ./vues/board.php [L]
-RewriteRule ^board_([a-z]*)$ ./vues/board_$1.php [L]
+RewriteRule ^board_([a-z]*)([0-9]*)$ ./vues/board_$1$2.php [L]
 
 RewriteRule ^recruit$ ./vues/recruit.php [L]
 RewriteRule ^recruit-([0-9]+)$ ./vues/recruit.php?id_job=$1 [L]

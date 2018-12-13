@@ -4,7 +4,7 @@
 <?php $title = "TAHITI - AWAIE -- Login";?>
 <!-- CONTENT -->
 <?php ob_start();?>
-	<form class="form-login" action="#" method="post">
+	<form class="form-login" action="../login" method="post">
 		<h2 class="form-login-heading">sign in now</h2>
 		<div class="login-wrap">
 			<input type="text" name="email" class="form-control" placeholder="Email" tabindex="1" autofocus>

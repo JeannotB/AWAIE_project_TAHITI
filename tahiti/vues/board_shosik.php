@@ -1,5 +1,5 @@
 <!-- TITLE -->
-<?php $title = "TAHITI - Baptiste Chevallier";?>
+<?php $title = "TAHITI - Stéphane Ho Sik Chuen";?>
 <!-- CONTENT -->
 <?php ob_start();?>
 
@@ -10,7 +10,7 @@
 			<li class="li_board"><a class="a_board_active" href=./board_shosik>Stéphane Ho Sik Chuen</a></li>
 			<li class="li_board"><a class="a_board" href=./board_tgoward>Thomas Goward</a></li>
 			<li class="li_board"><a class="a_board" href=./board_mpetit>Mikaël Petit</a></li>
-			<li class="li_board"><a class="a_board" href=.board_gpomme>Gaël Pommé</a></li>
+			<li class="li_board"><a class="a_board" href=./board_gpomme>Gaël Pommé</a></li>
 		</ul>
 	</div>
 	<!-- /Board-->
@@ -19,9 +19,9 @@
 	<div class="container">
 		<h2 class="text-center top-space">Stéphane Ho Sik Chuen</h2>
 		<h3 class="text-center top-space">Développeur</h3>
-		<img src="assets/img/shosik.jpg" alt="Stéphane Ho Sik Chuen" title="Stéphane Ho Sik Chuen" class="float_img" /> <br>
+		<a href="./board_shosik2"><img src="assets/img/shosik.jpg" alt="Stéphane Ho Sik Chuen" title="Stéphane Ho Sik Chuen" class="float_img" /></a> <br>
 		<p class="text-muted">
-			<h2>Cursurs universitaire</h2><br>
+			<h2>Cursus universitaire</h2><br>
 			- Master 2 Big Data Management and Analytics à l'Université de Tours [Tours (41)]<br>
 			- Elève ingénieur de l'INSA Centre Val de Loire [Blois (41)].<br>
 			- Classe préparatoire de Physique Chimie au Lycée Honoré de Balzac [Paris (75)]<br>
