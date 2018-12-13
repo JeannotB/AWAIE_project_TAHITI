@@ -15,7 +15,7 @@
         if ($news['id'] != "") {
             //Browse the news from his id
 
-            $verify_id = get_news();
+            $verify_id = get_all_news();
             
 
             foreach($verify_id as $elem) {
@@ -38,7 +38,7 @@
         'date' => [],
     ];
 
-    $data = get_news();
+    $data = get_all_news();
 
     foreach($data as $elem) {
         $news['id'][] = $elem['news_id'];

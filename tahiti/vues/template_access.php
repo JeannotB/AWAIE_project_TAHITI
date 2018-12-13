@@ -5,6 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<title><?php echo $title; ?></title>
+		
+		<base href="./vues/" />
 
 		<!-- Bootstrap core CSS -->
 		<link href="./css/bootstrap.css" rel="stylesheet">

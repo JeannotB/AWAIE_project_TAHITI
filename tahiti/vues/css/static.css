@@ -142,6 +142,7 @@ label {
 
 .text-muted {
 	color: #888;
+	text-align: justify;
 }
 
 .breadcrumb {
@@ -313,4 +314,47 @@ img.pull-left {
 
 textarea {
 	resize: vertical;
+}
+
+/* BOARD */
+
+.ul_board{
+	list-style-type: none;
+	padding-top: 130px;
+	text-align: center;
+}
+
+.li_board {
+	text-align: center;
+	display: inline;
+	margin-right: 2%;
+}
+
+.li_board .ul_board .a_board{
+	text-align: center;
+	align-content: center;
+}
+
+.a_board{
+	color:#777;
+	text-decoration: none;
+}
+
+.a_board:hover{
+	color:#333;
+	text-decoration: none;
+}
+
+.a_board_active{
+	font-weight: bold;
+	color:#333;
+	text-decoration: none;
+}
+
+.float_img{
+	height: 160px;
+	text-align: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }

@@ -87,7 +87,7 @@ function get_alertes($id = 'default')
     return $data;
 }
 
-function get_news($id = 'default')
+function get_all_news($id = 'default')
 {
     require '../models/db_connection.php';
 
@@ -99,6 +99,69 @@ function get_news($id = 'default')
         $sql_request = "SELECT * FROM news WHERE news_id = '" . $id . "'";
     }
 
+    $result = mysqli_query($sqlconnect, $sql_request);
+    while ($row = mysqli_fetch_assoc($result)) {
+        $data[] = $row;
+    }
+
+    return $data;
+}
+
+function get_news_front_page($limit = INF)
+{
+    require '../models/db_connection.php';
+
+    $data = null;
+
+    if($limit === INF){
+        $sql_request = "SELECT * FROM news WHERE is_online = true ORDER BY date DESC";
+    }   
+    else {
+        $sql_request = "SELECT * FROM news WHERE is_online = true ORDER BY date DESC LIMIT " . $limit . "";
+    }
+
+    $result = mysqli_query($sqlconnect, $sql_request);
+    while ($row = mysqli_fetch_assoc($result)) {
+        $data[] = $row;
+    }
+
+    return $data;
+}
+
+function get_offers_all()
+{
+    require '../models/db_connection.php';
+
+    $data = null;
+
+    $sql_request = "SELECT offer_id, title, description, date_offer, name, date_takeout, localisation,  type
+                    FROM recruit 
+                    INNER JOIN members on recruit.author_id = members.member_id
+                    WHERE recruit.is_online = true 
+                    ORDER BY date_offer DESC";
+
+    $result = mysqli_query($sqlconnect, $sql_request);
+    while ($row = mysqli_fetch_assoc($result)) {
+        $data[] = $row;
+    }
+
+    return $data;
+}
+
+function get_offer($id)
+{
+    if($id == null)
+        return -1;
+
+    require '../models/db_connection.php';
+
+    $data = null;
+
+    $sql_request = "SELECT offer_id, title, description, date_offer, name, date_takeout, localisation,  type
+                    FROM recruit 
+                    INNER JOIN members on recruit.author_id = members.member_id
+                    WHERE recruit.is_online = true AND offer_id = '". $id ."'
+                    ORDER BY date_offer DESC";
     $result = mysqli_query($sqlconnect, $sql_request);
     while ($row = mysqli_fetch_assoc($result)) {
         $data[] = $row;

@@ -23,7 +23,11 @@
                             
                 <div class="registration">
                     You have an account ?<br/>
-                    <a class="" href="index.php">Login</a>
+                    <a class="" href="../login">Login</a>
+                </div>
+                <hr>
+                <div class="registration">
+                    <a class="" href="../">Return to website</a>
                 </div>
             </div>
         </div>	
