@@ -28,7 +28,7 @@ function get_temp($limit = INF, $id = 'default')
     return $data;
 }
 
-function get_members($id = 'default')
+function get_members($token = 'default')
 {
     require '../models/db_connection.php';
 
@@ -37,7 +37,7 @@ function get_members($id = 'default')
     if ($id === 'default') {
         $sql_request = "SELECT * FROM members";
     } else {
-        $sql_request = "SELECT * FROM members WHERE member_id = '" . $id . "'";
+        $sql_request = "SELECT * FROM members WHERE token = '" . $token . "'";
     }
 
     $result = mysqli_query($sqlconnect, $sql_request);
@@ -53,16 +53,30 @@ function get_entreprise($id = 'default')
     require '../models/db_connection.php';
 
     $data = null;
+    $data_array_match = null;
+    $company_id_match = null;
 
-    if ($id === 'default') {
-        $sql_request = "SELECT * FROM entreprise";
-    } else {
-        $sql_request = "SELECT * FROM entreprise WHERE md5(company_id) = '" . $id . "'";
-    }
-
+    $sql_request = "SELECT * FROM entreprise";
     $result = mysqli_query($sqlconnect, $sql_request);
+    
     while ($row = mysqli_fetch_assoc($result)) {
         $data[] = $row;
+    }
+    if ($id === 'default') {
+
+    } else {
+        
+        array_walk($data, function ($item) use($id, &$company_id_match) {
+            if (password_verify($item['company_id'], $id))
+                $company_id_match = $item['company_id'];
+        });
+
+        foreach ($data as $key => $elem) {
+            if($elem['company_id'] == $company_id_match) {
+                $data_array_match[] = $data[$key]; 
+            }     
+        }
+        $data = $data_array_match;
     }
 
     return $data;
@@ -301,11 +315,13 @@ function get_entreprise_produits_alertes($limit_alerts = INF, $id_entreprise = '
         }
        
     } else {
+        $data_entreprise = get_entreprise($id_entreprise);
+
         if($limit_alerts === INF) {
-            $sql_request = "SELECT * FROM alertes JOIN produits, entreprise WHERE alertes.sonde_id=produits.id_produit AND produits.id_entreprise=entreprise.company_id AND md5(entreprise.company_id)='" . $id_entreprise . "' AND alertes.is_display=1 ORDER BY time DESC ";
+            $sql_request = "SELECT * FROM alertes JOIN produits, entreprise WHERE alertes.sonde_id=produits.id_produit AND produits.id_entreprise=entreprise.company_id AND entreprise.company_id='" . $data_entreprise[0]['company_id'] . "' AND alertes.is_display=1 ORDER BY time DESC ";
         }
         else {
-            $sql_request = "SELECT * FROM alertes JOIN produits, entreprise WHERE alertes.sonde_id=produits.id_produit AND produits.id_entreprise=entreprise.company_id AND md5(entreprise.company_id)='" . $id_entreprise . "' AND alertes.is_display=1 ORDER BY time DESC LIMIT ". $limit_alerts . "";
+            $sql_request = "SELECT * FROM alertes JOIN produits, entreprise WHERE alertes.sonde_id=produits.id_produit AND produits.id_entreprise=entreprise.company_id AND entreprise.company_id='" . $data_entreprise[0]['company_id'] . "' AND alertes.is_display=1 ORDER BY time DESC LIMIT ". $limit_alerts . "";
         }
         
     }
@@ -316,15 +332,25 @@ function get_entreprise_produits_alertes($limit_alerts = INF, $id_entreprise = '
     }
 
     return $data;
+
+    if($limit_alerts === INF){
+
+    }
+    else {
+
+    }
+
+
+
 }
 
-function get_entreprise_member($id_member)
+function get_entreprise_member($token_member)
 {
     require '../models/db_connection.php';
 
     $data = null;
 
-    $data_member = get_members($id_member);
+    $data_member = get_members($token_member);
     $data_entreprise = get_entreprise();
 
     $data = $data_member;
@@ -356,6 +382,20 @@ function update_produit($data, $id)
     else
         $error = "Error: " . $sql_request . " " . mysqli_error($sqlconnect);
 
+    return $error;
+}
+
+function insertAuthToken($id, $token)
+{
+    require '../models/db_connection.php';
+
+    $sql_request = "UPDATE members SET token = '" . $token ."'
+                                    WHERE member_id = '" . $id . "'";
+    if(mysqli_query($sqlconnect, $sql_request))
+        $error = "Token added";
+    else
+        $error = "Error: " . $sql_request . " " . mysqli_error($sqlconnect);
+    
     return $error;
 }
 
@@ -394,13 +434,13 @@ function insert_news($data)
     return $error;
 }
 
-function update_member($data, $id)
+function update_member($data, $token)
 {
     require '../models/db_connection.php';
 
     $sql_request = "UPDATE members SET name = '".$data['name']."',
                                        email = '".$data['email']."'
-                                   WHERE member_id = $id";
+                                   WHERE token = $token";
     
     if (mysqli_query($sqlconnect, $sql_request)) {
         $error = "News Update";

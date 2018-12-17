@@ -1,6 +1,5 @@
 <?php require('../controllers/index.php'); ?>
 
-
 <?php $title = 'TAHITI - Accueil'; ?>
 
 <?php ob_start();?>
@@ -75,20 +74,93 @@
 	<!-- /Products-->
 
 	<!-- Contact -->
-	<div class="container text-center container" id="contact">
+	<div class="container text-center container" id="about-us">
 		<h2 class="text-center top-space">Nous contacter</h2>
 		<br>
 		<div class="contact" style="text-align:center;">
 			<div class="form-group">
-				<form method="post" action="">
-					<input type="text" name="name" class="form-control" placeholder="Votre nom" tabindex="1"><br>
-					<input type="text" name="email" class="form-control" placeholder="Votre adresse mail" tabindex="2"><br>
-					<textarea name="content" class="form-control" rows="5" placeholder="Votre message" tabindex="3"></textarea><br>
-					<button class="btn btn-action btn-lg" type="submit" name="Login" tabindex="4"><i class="fa fa-envelope"></i> Envoyer</button>
+				<form id="contact-form" method="post" action="" onsubmit="return fieldtest()">
+					<label>Votre nom (obligatoire)</label>
+						<input type="text" name="name" class="form-control" placeholder="Votre nom" tabindex="1" onblur="verif(this)"><br>
+					<label>Votre email (obligatoire)</label>
+						<input type="text" name="email" class="form-control" placeholder="Votre adresse mail" tabindex="2" onblur="verif(this)"><br>
+					<label>Sujet du mail (obligatoire)</label>
+						<input type="text" name="subject" class="form-control" placeholder="Sujet du mail" tabindex="3" onblur="verif(this)"><br>
+					<label>Votre message (obligatoire)</label>
+						<textarea name="content" class="form-control" rows="5" placeholder="Votre message" tabindex="4" onblur="verif(this)"></textarea><br>
+					<button class="btn btn-action btn-lg" type="submit" name="contact_submit" tabindex="5"><i class="fa fa-envelope"></i> Envoyer</button>
 				</form>
 			</div>
 		</div> <!-- /row -->
 	</div> <!-- /contact -->
+
+	<!-- Modal -->
+	<div class="modal fade" id="notification" tabindex="-1" role="dialog" aria-labelledby="Notification Mail" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="title">Notification Contact</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+	</div>
+
+	<!-- JS SCRIPT -->
+	<script type="text/javascript" language="javascript">
+
+		window.onload = function(){
+			var modal_content = '<?php echo $modal_content; ?>';
+			if(modal_content != '') {
+				$("#notification").modal()
+				$(".modal-body").append(modal_content);
+			}
+		}
+
+
+		function verif(champ){
+			if(champ.value == "" || champ.value == "none")
+			{
+				champ.style.backgroundColor = 'rgba(255,0, 0, 0.65)';
+				return false;
+			}
+			else
+			{
+				champ.style.backgroundColor = "#ffffff";
+				return true;
+			}
+		}
+
+		function fieldtest(){
+			var form = document.getElementById("contact-form");
+			var testOK = true;
+
+			testOK &= verif(form.name);
+			testOK &= verif(form.email);
+			testOK &= verif(form.subject);
+			testOK &= verif(form.content);
+
+			if(testOK == false) {
+				$("#notification").modal()
+				$(".modal-body").append("Veuillez renseigner tous les champs obligatoires");
+
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+
+	</script>
+
+
 <?php $content = ob_get_clean();?>
 
 <?php require 'template_front.php';?>

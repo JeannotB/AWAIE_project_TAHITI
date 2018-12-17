@@ -14,7 +14,7 @@
 
         <?php
             
-                echo "<a href='dashboard.php?id_company=".md5($data[$j]['company_id'])."'><h3 style='margin-left:15px;'>" . $data[$j]['Nom'] . "</h3></a>";
+                echo "<a href='dashboard.php?id_company=".password_hash($data[$j]['company_id'], PASSWORD_BCRYPT)."'><h3 style='margin-left:15px;'>" . $data[$j]['Nom'] . "</h3></a>";
                 //loop display graph of all company's sensors
                 for ($i = 0; $i < count($data[$j]['produit']); $i++) {
                     $produit = $data[$j]['produit'][$i];

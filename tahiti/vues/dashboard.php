@@ -34,13 +34,13 @@
 
                 <div class="darkblue-panel pn centered" style="position: absolute; top:0px; left:15px; right:15px; height: 100%; opacity: 0.2;">
                     <div class="chart mt" style="position: absolute; left:0px; top: 25%;">
-                        <script>
-                            var t =                                    <?php echo json_encode($temp); ?>;
+                        <script type="text/javascript" language="javascript">
+                            var t = <?php echo json_encode($temp); ?>;
                                 t = t.reverse();
                         </script>
-                        <div id=<?php echo $produit['ref_produit'] . "graph"; ?> class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4">
+                        <div id="<?php echo $produit['ref_produit'] . 'graph'; ?>" class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4">
                         </div>
-                        <script>
+                        <script type="text/javascript" language="javascript">
                             document.getElementById("<?php echo $produit['ref_produit'] . 'graph'; ?>").setAttribute("data-data", "[" + t + "]");
                         </script>
                     </div>
@@ -96,7 +96,7 @@
 <script src="./js/sparkline-chart.js"></script>
 <script src="./js/leaflet/leaflet.js"></script>
 
-<script>
+<script type="text/javascript" language="javascript">
         function mean(a)
         {
             var j = 0;

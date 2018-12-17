@@ -1,6 +1,7 @@
 <?php
     session_start();
     require ('../controllers/sql.php');
+    require '../models/session.php';
     //Structure
     $profile = [
         'name' => "",
@@ -13,8 +14,7 @@
     ];
 
 
-
-    $id = $_SESSION['user_id'];
+    $token = $_SESSION['token'];
 
     //Code de validation des nouveaux paramètres du compte
     if(isset($_POST['submit']))
@@ -27,7 +27,7 @@
 
         if(isset($_POST['password']) && isset($_POST['password_confirm']))
         {
-            $data = get_members($id);
+            $data = get_members($token);
             //Check password
             if(password_verify(htmlspecialchars($_POST['password']), htmlspecialchars($_POST['password_confirm'])) && password_verify(htmlspecialchars($_POST['password']), $row['password']))
             {
@@ -39,7 +39,7 @@
                 //$profile['logo_company'] = $row['logo'];
 
                 //change member parameters
-                $error = update_member($profile, $id);
+                $error = update_member($profile, $token);
             }
             else
             {
@@ -48,7 +48,7 @@
         }
     }
 
-    $data = get_entreprise_member($id);
+    $data = get_entreprise_member($token);
     
     $profile['name'] = $data[0]['name'];
     $profile['email'] = $data[0]['email'];

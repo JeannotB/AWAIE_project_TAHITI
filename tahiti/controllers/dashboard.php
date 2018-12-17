@@ -1,6 +1,7 @@
 <?php 
     session_start();
     require ('../controllers/sql.php');
+    require '../models/session.php';
 
     //get company id
     if(isset($_GET['id_company']))

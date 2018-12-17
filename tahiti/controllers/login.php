@@ -1,6 +1,11 @@
 <?php
 	require '../models/db_connection.php';
+	require '../models/session.php';
+	require '../controllers/sql.php';
 
+	session_start();
+
+	
     //deafult error message and inactive
     $isOnline = false;
 
@@ -22,18 +27,25 @@
 			//Verify password
 			if(password_verify($password,$row['password']))
 			{
+				//Create auth token, availiable during
+				$token = bin2hex(openssl_random_pseudo_bytes(50));
+				//Crypt token
+				$token = password_hash($token, PASSWORD_BCRYPT);
+				//add token into member database
+				insertAuthToken($row['member_id'], $token);
+				
+				//add token to the session
+				createSession($token, password_hash($row['admin'], PASSWORD_BCRYPT), password_hash($row['id_company'], PASSWORD_BCRYPT));
+
+
+
 				$_SESSION['username'] = $row['name'];
 				$_SESSION['useremail'] = $row['email'];
-				$_SESSION['user_id'] = $row['member_id'];
-				$_SESSION['isOnline'] = true;
-				$_SESSION['delete'] = false;
-				$_SESSION['id_company'] = $row['id_company'];
-				$_SESSION['admin'] = $row['admin'];
 
 				//update isOnline on DataBase
 				
 				$sql = "UPDATE members SET isOnline = '1'
-							WHERE 	member_id='".$_SESSION['user_id']."'";
+							WHERE 	member_id='".$row['member_id']."'";
 
 				if(mysqli_query($sqlconnect, $sql))
 					$error = "Successfully register";
@@ -44,7 +56,7 @@
 					$company_path = "dashboard_admin.php";
 				}
 				else
-					$company_path = "dashboard.php?id_company=".md5($row['id_company']);
+					$company_path = "dashboard.php?id_company=".password_hash($row['id_company'], PASSWORD_BCRYPT);
 				header('Location: ./vues/'.$company_path.'');
 			}
 			else

@@ -15,7 +15,7 @@
             <div class="form-panel">
                 <form class="form-horizontal style-form" method="post">
                     <div class="form-group">
-                        <p class="centered"><a href="profile.php"><img src="../img/jeannot.jpg" class="img-circle" width="60"></a></p>
+                        <p class="centered"><a href="profile.php"><img src="../img/icon.png" class="img-circle" width="60"></a></p>
                         <h5 class="centered"><?php echo $profile['name']; ?></h5>
                         <p class="centered">Date d'inscription :                                                                 <?php echo date($profile['date_inscription']); ?></p>
                     </div>

@@ -1,6 +1,7 @@
 <?php
     session_start();
     require '../controllers/sql.php';
+    require '../models/session.php';
 
     if (isset($_POST['submit'])) {
         $news = [

@@ -82,7 +82,7 @@
                             }
 
                         ?>
-                        <p class="centered"><a href="profile.php"><img src="../img/jeannot.jpg" class="img-circle" width="60"></a></p>
+                        <p class="centered"><a href="profile.php"><img src="../img/icon.png" class="img-circle" width="60"></a></p>
                         <h5 class="centered"><?php echo $name; ?></h5>
 
                         <?php
@@ -91,7 +91,7 @@
                                 $admin = $_SESSION['admin'];
                             }
 
-                            if ($admin) {
+                            if (password_verify('1',$admin)) {
                         ?>
                         <li class="sub-menu">
                             <a href="dashboard_admin.php">
@@ -120,7 +120,7 @@
                                 //get company id
                                 $company_path = 'dashboard.php';
                                 if (isset($_SESSION['id_company'])) {
-                                    $company_path = "dashboard.php?id_company=" . md5($_SESSION['id_company']);
+                                    $company_path = "dashboard.php?id_company=" . $_SESSION['id_company'];
                                 }
                             ?>
                             <a href=<?php echo '"' . $company_path . '"'; ?>>
@@ -132,6 +132,12 @@
                         <?php
                             }
                         ?>
+                        <li class="sub-menu">
+                            <a href="contact.php">
+                                <i class="fa fa-question-circle"></i>
+                                <span>Contact</span>
+                            </a>
+                        </li>
                         <li class="sub-menu">
                             <a href="../" target="_blank">
                                 <i class="fa fa-sign-out"></i>
@@ -168,7 +174,7 @@
             <!--footer start-->
             <footer class="site-footer">
                 <div class="text-center">
-                    2018 - AWAIE Projects, Tahiti Team
+                    2018 - AWAIE Projects, Tahiti Team, TAHITI.io
                     <a href="#" class="go-top">
                         <i class="fa fa-angle-up"></i>
                      </a>
