@@ -1,15 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.6deb4
 -- https://www.phpmyadmin.net/
 --
+<<<<<<< HEAD
 -- Hôte : 127.0.0.1:3306
 -- Généré le :  jeu. 11 oct. 2018 à 15:08
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
+=======
+-- Client :  localhost:3306
+-- Généré le :  Mer 19 Décembre 2018 à 17:13
+-- Version du serveur :  10.1.37-MariaDB-0+deb9u1
+-- Version de PHP :  7.0.33-0+deb9u1
+>>>>>>> 3d127f72b767b222282eec11d720b24655baac94
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -30,19 +35,23 @@ USE `awaie`;
 -- Structure de la table `alertes`
 --
 
-DROP TABLE IF EXISTS `alertes`;
-CREATE TABLE IF NOT EXISTS `alertes` (
-  `alert_id` int(11) NOT NULL AUTO_INCREMENT,
-  `time` timestamp NOT NULL,
+CREATE TABLE `alertes` (
+  `alert_id` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `temp` float NOT NULL,
   `sonde_id` int(11) NOT NULL,
+<<<<<<< HEAD
   `is_display` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0 : not displayed / 1 : displayed',
   PRIMARY KEY (`alert_id`),
   KEY `sonde_id` (`sonde_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+=======
+  `is_display` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0 : not displayed / 1 : displayed'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+>>>>>>> 3d127f72b767b222282eec11d720b24655baac94
 
 --
--- Déchargement des données de la table `alertes`
+-- Contenu de la table `alertes`
 --
 
 INSERT INTO `alertes` (`alert_id`, `time`, `temp`, `sonde_id`, `is_display`) VALUES
@@ -195,18 +204,23 @@ INSERT INTO `alertes` (`alert_id`, `time`, `temp`, `sonde_id`, `is_display`) VAL
 -- Structure de la table `capteur`
 --
 
-DROP TABLE IF EXISTS `capteur`;
-CREATE TABLE IF NOT EXISTS `capteur` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `capteur` (
+  `id` int(11) NOT NULL,
   `sonde_id` int(11) NOT NULL,
+<<<<<<< HEAD
   `date` timestamp NOT NULL,
   `temperature` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `sonde_id` (`sonde_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=580 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+=======
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `temperature` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+>>>>>>> 3d127f72b767b222282eec11d720b24655baac94
 
 --
--- Déchargement des données de la table `capteur`
+-- Contenu de la table `capteur`
 --
 
 INSERT INTO `capteur` (`id`, `sonde_id`, `date`, `temperature`) VALUES
@@ -793,11 +807,22 @@ INSERT INTO `capteur` (`id`, `sonde_id`, `date`, `temperature`) VALUES
 --
 -- Déclencheurs `capteur`
 --
-DROP TRIGGER IF EXISTS `copy2alert`;
 DELIMITER $$
+<<<<<<< HEAD
 CREATE TRIGGER `copy2alert` BEFORE INSERT ON `capteur` FOR EACH ROW IF NEW.temperature > 20 THEN
 	BEGIN
     	INSERT INTO alertes(alertes.time, alertes.temp, alertes.sonde_id, alertes.is_display)
+=======
+CREATE TRIGGER `copy2alert` BEFORE INSERT ON `capteur` FOR EACH ROW BEGIN
+DECLARE alerteSup int(8);
+DECLARE alerteInf int(8);
+
+SELECT alerte_sup INTO alerteSup FROM produits WHERE produits.id_produit = NEW.sonde_id;
+SELECT alerte_inf INTO alerteInf FROM produits WHERE produits.id_produit = NEW.sonde_id;
+
+IF NEW.temperature > alerteSup OR NEW.temperature < alerteInf THEN
+	    	INSERT INTO alertes(alertes.time, alertes.temp, alertes.sonde_id, alertes.is_display)
+>>>>>>> 3d127f72b767b222282eec11d720b24655baac94
         	VALUES (NEW.date, NEW.temperature, NEW.sonde_id, '1');
     END;
 END IF
@@ -810,18 +835,22 @@ DELIMITER ;
 -- Structure de la table `entreprise`
 --
 
-DROP TABLE IF EXISTS `entreprise`;
-CREATE TABLE IF NOT EXISTS `entreprise` (
-  `company_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `entreprise` (
+  `company_id` int(11) NOT NULL,
   `Nom` text COLLATE utf8_unicode_ci NOT NULL,
   `Tel` int(11) NOT NULL,
   `Adresse` text COLLATE utf8_unicode_ci NOT NULL,
+<<<<<<< HEAD
   `logo` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`company_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+=======
+  `logo` text COLLATE utf8_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+>>>>>>> 3d127f72b767b222282eec11d720b24655baac94
 
 --
--- Déchargement des données de la table `entreprise`
+-- Contenu de la table `entreprise`
 --
 
 INSERT INTO `entreprise` (`company_id`, `Nom`, `Tel`, `Adresse`, `logo`) VALUES
@@ -833,26 +862,61 @@ INSERT INTO `entreprise` (`company_id`, `Nom`, `Tel`, `Adresse`, `logo`) VALUES
 -- Structure de la table `members`
 --
 
-DROP TABLE IF EXISTS `members`;
-CREATE TABLE IF NOT EXISTS `members` (
-  `member_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `members` (
+  `member_id` int(11) NOT NULL,
   `name` text COLLATE utf8_unicode_ci NOT NULL,
   `email` text COLLATE utf8_unicode_ci NOT NULL,
   `password` text COLLATE utf8_unicode_ci NOT NULL,
   `isOnline` tinyint(2) NOT NULL COMMENT '0: offline / 1:online / 2:busy',
+<<<<<<< HEAD
   `id_company` int(11) NOT NULL,
   `date_inscription` timestamp NOT NULL,
   `admin` tinyint(1) NOT NULL COMMENT '0 : not an admin / 1 : admin',
   PRIMARY KEY (`member_id`),
   KEY `id_company` (`id_company`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+=======
+  `id_company` int(11) DEFAULT NULL,
+  `date_inscription` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `admin` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 : not an admin / 1 : admin',
+  `token` text COLLATE utf8_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+>>>>>>> 3d127f72b767b222282eec11d720b24655baac94
 
 --
--- Déchargement des données de la table `members`
+-- Contenu de la table `members`
 --
 
+<<<<<<< HEAD
 INSERT INTO `members` (`member_id`, `name`, `email`, `password`, `isOnline`, `id_company`, `date_inscription`, `admin`) VALUES
 (3, 'a', 'a', '0cc175b9c0f1b6a831c399e269772661', 1, 1, '2018-10-08 22:00:00', 1);
+=======
+INSERT INTO `members` (`member_id`, `name`, `email`, `password`, `isOnline`, `id_company`, `date_inscription`, `admin`, `token`) VALUES
+(3, 'admin', 'a', '$2y$10$fBdKJCy1jKR03InQB0KbjO.0pqtb5ou7KTbMDMRqBuPYeYeWjdH1.', 1, NULL, '2018-10-08 22:00:00', 1, '$2y$10$ONxvzXibPPCr.My2IhvTYuNfkRFT3vxRq7ybXK3.BF2UtgVqlgrJa'),
+(4, 'Baptiste Chevallier', 'jeannotb76360@gmail.com', '$2y$10$jfrMY3dY51p8HVMOi/JPtumQu84FLHLr080IYYlYMNEx/iYAK6xBy', 0, 2, '2018-11-09 13:06:04', 0, '$2y$10$Bb70PbfibrhY98jdpqbCAuvfecIVOSrwf2YLDgrdjA1X6sR/gzQeG');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `news`
+--
+
+CREATE TABLE `news` (
+  `news_id` int(11) NOT NULL,
+  `title` longtext CHARACTER SET utf8 NOT NULL,
+  `is_online` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'true = online / false = not online',
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `description` longtext CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `news`
+--
+
+INSERT INTO `news` (`news_id`, `title`, `is_online`, `date`, `description`) VALUES
+(1, 'Bienvenue sur notre nouveau site web !', 1, '2018-11-20 13:34:11', '<p>Bienvenue sur notre nouveau site web !</p>'),
+(2, 'TAHITI dans le projet AWAIE', 1, '2018-11-20 14:16:36', 'Dans le cadre de la conférence ACAD, TAHITI va travailler sur le projet AWAIE. Ce challenge du comité Maxime Bavencoffe est proposé à l\'ensemble des acteurs de la réception de données.');
+>>>>>>> 3d127f72b767b222282eec11d720b24655baac94
 
 -- --------------------------------------------------------
 
@@ -860,28 +924,164 @@ INSERT INTO `members` (`member_id`, `name`, `email`, `password`, `isOnline`, `id
 -- Structure de la table `produits`
 --
 
-DROP TABLE IF EXISTS `produits`;
-CREATE TABLE IF NOT EXISTS `produits` (
-  `id_produit` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `produits` (
+  `id_produit` int(11) NOT NULL,
   `ref_produit` text COLLATE utf8_unicode_ci NOT NULL,
   `GPS_lat` double NOT NULL,
   `GPS_long` double NOT NULL,
+<<<<<<< HEAD
   `id_entreprise` int(11) NOT NULL,
   PRIMARY KEY (`id_produit`),
   KEY `id_entreprise` (`id_entreprise`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+=======
+  `alerte_sup` int(11) NOT NULL DEFAULT '25',
+  `alerte_inf` int(11) NOT NULL DEFAULT '20',
+  `id_entreprise` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+>>>>>>> 3d127f72b767b222282eec11d720b24655baac94
 
 --
--- Déchargement des données de la table `produits`
+-- Contenu de la table `produits`
 --
 
+<<<<<<< HEAD
 INSERT INTO `produits` (`id_produit`, `ref_produit`, `GPS_lat`, `GPS_long`, `id_entreprise`) VALUES
 (1, 'INSA_1', 47.58470153808594, 1.325850009918213, 1),
 (2, 'INSA_2', 47.584537506103516, 1.3255150318145752, 1),
 (3, 'INSA_3', 47.58516311645508, 1.3252040147781372, 1);
+=======
+INSERT INTO `produits` (`id_produit`, `ref_produit`, `GPS_lat`, `GPS_long`, `alerte_sup`, `alerte_inf`, `id_entreprise`) VALUES
+(1, 'INSA_1', 47.584681150362734, 1.3257926703590783, 25, 15, 1),
+(2, 'INSA_2', 47.584537506103516, 1.3255150318145752, 25, 20, 1),
+(3, 'INSA_3', 47.58516311645508, 1.3252040147781372, 25, 20, 1),
+(4, 'INSA_4', 47.5840869016875, 1.3248896600998705, 25, 20, 1),
+(5, 'MF_02', 47.596515, 1.328898, 25, 20, 2),
+(6, 'MF_01', 43.577802, 1.377438, 25, 20, 2);
+
+-- --------------------------------------------------------
 
 --
--- Contraintes pour les tables déchargées
+-- Structure de la table `recruit`
+--
+
+CREATE TABLE `recruit` (
+  `offer_id` int(11) NOT NULL,
+  `author_id` int(11) NOT NULL DEFAULT '-1',
+  `title` longtext CHARACTER SET utf8 NOT NULL,
+  `is_online` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'true = online / false = not online',
+  `date_offer` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `description` longtext CHARACTER SET utf8 NOT NULL,
+  `type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 = Permanent / 1 = Non-permanent / 2 = Internship',
+  `localisation` tinytext CHARACTER SET utf8 NOT NULL,
+  `date_takeout` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `recruit`
+--
+
+INSERT INTO `recruit` (`offer_id`, `author_id`, `title`, `is_online`, `date_offer`, `description`, `type`, `localisation`, `date_takeout`) VALUES
+(2, 4, 'Test offre première offre', 1, '2018-12-04 08:13:43', 'Test description première offre', 0, 'Blois', '2018-12-04 08:13:43'),
+(3, 4, 'Test offre seconde offre', 1, '2018-12-04 08:13:43', 'Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre  Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre  Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre ', 1, 'Bourges', '2019-02-07 08:13:43'),
+(4, 4, 'Test offre troisième offre', 1, '2018-12-04 08:13:43', 'Blablabla', 2, 'Valençay', '2018-12-04 08:13:43'),
+(5, 4, 'Test offre première offre', 1, '2018-12-04 08:13:43', 'Test description première offre', 0, 'Blois', '2018-12-04 08:13:43'),
+(6, 4, 'Test offre seconde offre', 1, '2018-12-04 08:13:43', 'Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre  Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre  Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre Test offre seconde offre ', 1, 'Bourges', '2019-02-07 08:13:43'),
+(7, 4, 'Test offre troisième offre', 1, '2018-12-04 08:13:43', 'Blablabla', 2, 'Valençay', '2018-12-04 08:13:43');
+>>>>>>> 3d127f72b767b222282eec11d720b24655baac94
+
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `alertes`
+--
+ALTER TABLE `alertes`
+  ADD PRIMARY KEY (`alert_id`),
+  ADD KEY `sonde_id` (`sonde_id`);
+
+--
+-- Index pour la table `capteur`
+--
+ALTER TABLE `capteur`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sonde_id` (`sonde_id`);
+
+--
+-- Index pour la table `entreprise`
+--
+ALTER TABLE `entreprise`
+  ADD PRIMARY KEY (`company_id`);
+
+--
+-- Index pour la table `members`
+--
+ALTER TABLE `members`
+  ADD PRIMARY KEY (`member_id`),
+  ADD KEY `id_company` (`id_company`);
+
+--
+-- Index pour la table `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`news_id`);
+
+--
+-- Index pour la table `produits`
+--
+ALTER TABLE `produits`
+  ADD PRIMARY KEY (`id_produit`),
+  ADD KEY `id_entreprise` (`id_entreprise`);
+
+--
+-- Index pour la table `recruit`
+--
+ALTER TABLE `recruit`
+  ADD PRIMARY KEY (`offer_id`),
+  ADD KEY `author_is_member` (`author_id`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `alertes`
+--
+ALTER TABLE `alertes`
+  MODIFY `alert_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+--
+-- AUTO_INCREMENT pour la table `capteur`
+--
+ALTER TABLE `capteur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=663;
+--
+-- AUTO_INCREMENT pour la table `entreprise`
+--
+ALTER TABLE `entreprise`
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `members`
+--
+ALTER TABLE `members`
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT pour la table `news`
+--
+ALTER TABLE `news`
+  MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `produits`
+--
+ALTER TABLE `produits`
+  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT pour la table `recruit`
+--
+ALTER TABLE `recruit`
+  MODIFY `offer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- Contraintes pour les tables exportées
 --
 
 --
@@ -943,6 +1143,7 @@ INSERT INTO `job` (`id_job`, `isonline`, `titre_job`, `description_job`, `date_c
 --
 -- Structure de la table `member`
 --
+<<<<<<< HEAD
 
 DROP TABLE IF EXISTS `member`;
 CREATE TABLE IF NOT EXISTS `member` (
@@ -1058,6 +1259,10 @@ INSERT INTO `publications` (`id_pubs`, `isonline`, `titre_pubs`, `author`, `jour
 (2, 1, 'This is a second test', 'Test1, Test2', 'JournalTest', '2018-05-10', 'http://dx.doi.org/10.1021/acs.cgd.5b01271', 1),
 (3, -1, '<p>jrakzrkj<sup><sub>ezakaeza</sub></sup>eazezakeaz</p>\r\n', 'a', NULL, '2018-09-11', 'google.fr', 1);
 COMMIT;
+=======
+ALTER TABLE `recruit`
+  ADD CONSTRAINT `author_is_member` FOREIGN KEY (`author_id`) REFERENCES `members` (`member_id`);
+>>>>>>> 3d127f72b767b222282eec11d720b24655baac94
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
