@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<head>
-    <meta http-equiv="refresh" content="300">
-</head>
-
 <?php
 
 
@@ -12,7 +7,7 @@ require 'PHPModbus/ModbusMasterTcp.php';
 require 'PHPModbus/PhpType.php';
 require 'PHPModbus/IecType.php';
 
-require 'db_connection.php';
+require (realpath(dirname(__FILE__)).'/../../models/db_connection.php');
 
 
 
@@ -74,6 +69,4 @@ foreach($temp as $elem)
 }
 
 
-sleep(1);
-
-?>
+//sleep(1);
