@@ -182,5 +182,17 @@
             </footer>
         <!--footer end-->
     </section>
+    
+    <script src="./js/jquery.js"></script>
+    <script src="./js/common-scripts.js"></script>
+    <script>
+        //custom select box
+        
+        $(function(){
+               $('select.styled').customSelect(); 
+        });
+    
+    </script>
+    
     </body>
 </html>
