@@ -99,6 +99,12 @@
                                 <span>Dashboard ADMIN</span>
                             </a>
                         </li>
+                        <li class="sub-menu">
+                            <a href="users_entreprise.php">
+                                <i class="fa fa-dashboard"></i>
+                                <span>User Entreprise</span>
+                            </a>
+                        </li>
 
                         <li class="sub-menu">
                             <a href="javascript:;" >
