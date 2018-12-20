@@ -28,10 +28,10 @@
       $mail->Body='Name : '.$_POST['first_name'].' '.$_POST['last_name'].'<br>Email : '.$_POST['email'].'<br>Message : '.$_POST['message'];
 
       $mail->Send();
-      $result= 'Message has been sent';
+      $result= '...à été envoyé!';
     }catch (Exception $e) {
-      $result= 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+      $result= '...n\'a pas été envoyé :( . Mailer Error: '. $mail->ErrorInfo;
   }
   }
-  
+
  ?>
