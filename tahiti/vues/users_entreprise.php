@@ -20,7 +20,6 @@
         $gps_long[] = $row['GPS_long'];
         $ref_id[] = md5($row['ref_produit']);
     }
-
 ?>
 
 <!DOCTYPE html>
