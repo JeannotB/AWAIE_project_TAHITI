@@ -34,7 +34,7 @@ function get_members($token = 'default')
 
     $data = null;
 
-    if ($id === 'default') {
+    if ($token === 'default') {
         $sql_request = "SELECT * FROM members";
     } else {
         $sql_request = "SELECT * FROM members WHERE token = '" . $token . "'";
@@ -44,7 +44,7 @@ function get_members($token = 'default')
     while ($row = mysqli_fetch_assoc($result)) {
         $data[] = $row;
     }
-
+    
     return $data;
 }
 
