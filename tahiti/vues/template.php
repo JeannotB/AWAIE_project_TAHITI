@@ -180,10 +180,8 @@
             </footer>
         <!--footer end-->
     </section>
-    
     <!-- JavaScript -->
         <script src="./js/jquery.scrollTo.min.js"></script>
         <script src="./js/common-scripts.js"></script>
-    
     </body>
 </html>
