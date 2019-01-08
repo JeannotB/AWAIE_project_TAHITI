@@ -74,7 +74,7 @@ require '../controllers/trad_date.php';
 	<div class="container">
         <h2 class="text-center top-space">
 			<?php if ($first_job_id != 0) {?> 
-				<a href="recruit-<?php echo $first_job_id?>"><i class="fa fa-angle-double-left"></i></a> <?php } ?>
+				<a href="recruit-<?php echo $first_job_id-$number_offers_displayed?>"><i class="fa fa-angle-double-left"></i></a> <?php } ?>
 			<?php if (($last_job_id) != $job_max) { ?>
 				<a href="recruit-<?php echo $last_job_id?>"><i class="fa fa-angle-double-right"></i></a> <?php } ?>
 		</h2> <br>
