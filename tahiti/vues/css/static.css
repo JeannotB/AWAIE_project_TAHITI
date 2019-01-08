@@ -1,11 +1,11 @@
 /* Header */
 
 #head {
-	background: #181015 url(../img/automate2.png) no-repeat;
+	background: #3259A2 url(../img/automate2.png) no-repeat;
 	background-size: cover;
-	min-height: 520px;
+	min-height: 430px;
 	text-align: center;
-	padding-top: 240px;
+	padding-top: 150px;
 	color: white;
 	font-weight: 300;
 }
@@ -304,7 +304,7 @@ img.pull-left {
 
 .contact {
 	width: 66%;
-	
+
     background: #ffffff;
     margin: 10px auto;
     padding: 10px;
