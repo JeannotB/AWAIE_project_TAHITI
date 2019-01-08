@@ -16,7 +16,7 @@
             <thead>
                 <tr>
                     <th>Entreprise</th>
-                    <th>id</th>
+                    <th>Tel</th>
                     <th>Adresse</th>
                 </tr>
             </thead>
@@ -41,8 +41,8 @@
             <thead>
                 <tr>
                     <th>Client</th>
-                    <th>email</th>
-                    <th>entreprise</th>
+                    <th>Email</th>
+                    <th>Entreprise</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,6 +60,8 @@
     </div>
 </div><!-- /col-lg-3 -->
 
+
+<a class="fc-button"></a>
 
 </div>
 <!--/row -->
