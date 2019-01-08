@@ -19,9 +19,9 @@
       $mail->Username='contact.sup.tahiti@gmail.com';
       $mail->Password='TahitiAWAIE41';
 
-      $mail->setFrom('contact.sup.tahiti@gmail.com',$_POST['last_name']);
-      $mail->addAddress('contact.sup.tahiti@gmail.com',$_POST['last_name']);
-      $mail->addReplyTo($_POST['email'],$_POST['last_name']);
+      $mail->setFrom($_POST['email'],$_POST['last_name']);
+      $mail->addAddress('thomas.goward@insa-cvl.fr',$_POST['last_name'].' '.$_POST['first_name']);
+      $mail->addReplyTo($_POST['email'],$_POST['last_name'].' '.$_POST['first_name']);
 
       $mail->isHTML(true);
       $mail->Subject = 'HELP: '.$_POST['subject'];

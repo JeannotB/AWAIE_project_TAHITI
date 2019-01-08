@@ -1,6 +1,23 @@
 <?php require "testmail.php"; ?>
 <?php
+session_start();
 
+//Need DataBase connection
+  require './models/db_connection.php';
+
+  if(isset($_GET['sonde']))
+      $sonde = $_GET['sonde'];
+  else
+      $sonde = null;
+
+  //Get GPS
+  $sql_get_gps = "SELECT * FROM produits WHERE md5(ref_produit)='".$sonde."'";
+  $result = mysqli_query($sqlconnect, $sql_get_gps);
+  while ($row = mysqli_fetch_assoc($result)) {
+      $gps_lat = $row['GPS_lat'];
+      $gps_long = $row['GPS_long'];
+      $sonde_name = $row['ref_produit'];
+  }
 
  ?>
 <!DOCTYPE html>
