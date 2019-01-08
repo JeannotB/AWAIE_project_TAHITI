@@ -69,39 +69,39 @@
 
     <script type="text/javascript">
 
-    var dataNews = <?php echo json_encode($news); ?>;
+        var dataNews = <?php echo json_encode($news); ?>;
 
-    window.onload = function() {
+        window.onload = function() {
 
-        var elemSelect = document.getElementById('news_title_select');
-        elemSelect.onchange = function() {
-            var elemTitle = document.getElementById('news_title');
-            var elemDescription = document.getElementById('news_description');
-            var elemOnline = document.getElementById('news_online');
-            var elemId = document.getElementById('news_id');
-            if(elemSelect.value === "none") {
-                fieldEmpty();
-            } else {
-                for(var i= 0; i < dataNews['title'].length; i++){
-                    if(dataNews['title'][i] === elemSelect.value){
-                        elemTitle.value = dataNews['title'][i];
-                        elemDescription.value = dataNews['description'][i];
-                        elemId.value = dataNews['id'][i]; 
-                        $('#switch_online').bootstrapSwitch('setState', (dataNews['online'][i] == 0 ? false : true ));
-                    }
-                    
-                }             
+            var elemSelect = document.getElementById('news_title_select');
+            elemSelect.onchange = function() {
+                var elemTitle = document.getElementById('news_title');
+                var elemDescription = document.getElementById('news_description');
+                var elemOnline = document.getElementById('news_online');
+                var elemId = document.getElementById('news_id');
+                if(elemSelect.value === "none") {
+                    fieldEmpty();
+                } else {
+                    for(var i= 0; i < dataNews['title'].length; i++){
+                        if(dataNews['title'][i] === elemSelect.value){
+                            elemTitle.value = dataNews['title'][i];
+                            elemDescription.value = dataNews['description'][i];
+                            elemId.value = dataNews['id'][i]; 
+                            $('#switch_online').bootstrapSwitch('setState', (dataNews['online'][i] == 0 ? false : true ));
+                        }
+                        
+                    }             
+                }
             }
-        }
-    };
+        };
 
-    function fieldEmpty() {
-        document.getElementById('news_title').value = "";
-        document.getElementById('news_description').value = "";
-        document.getElementById('news_online').value = "";
-        document.getElementById('news_id').value = "";
-        $('#switch_online').bootstrapSwitch('setState', false);
-    };
+        function fieldEmpty() {
+            document.getElementById('news_title').value = "";
+            document.getElementById('news_description').value = "";
+            document.getElementById('news_online').value = "";
+            document.getElementById('news_id').value = "";
+            $('#switch_online').bootstrapSwitch('setState', false);
+        };
 
     </script>
     <script src="./js/bootstrap-switch.js"></script>

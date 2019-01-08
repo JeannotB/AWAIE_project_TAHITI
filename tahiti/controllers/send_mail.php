@@ -19,6 +19,7 @@
 
             $mail->setFrom($mail_content['email_address'],'Contact');
             $mail->addAddress('contact.sup.tahiti@gmail.com','Contact');
+            //$mail->addAddress('baptiste.chevallier@insa-cvl.fr','Contact');
             $mail->AddReplyTo($mail_content['email_address'],$mail_content['name']);
 
             $mail->isHTML(true);

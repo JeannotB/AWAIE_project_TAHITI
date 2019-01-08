@@ -28,7 +28,7 @@
                     <i class="fa fa-thermometer-half"></i>
                     <?php if (isset($produit['temp'][0]['temperature'])) {echo "<h1>" . $produit['temp'][0]['temperature'] . " °C</h1>";}?>
                         <div class="row">
-                            <?php echo "<h3 class='centered'>" . $produit['ref_produit'] . "</h3>"; ?><?php if (isset($produit['temp'][0]['date'])) {echo "<p class='centered'>" . $produit['temp'][0]['date'] . "</p>";}?>
+                            <?php echo "<h4 class='centered'>" . $produit['ref_produit'] . "</h3>"; ?><?php if (isset($produit['temp'][0]['date'])) {echo "<p class='centered'>" . $produit['temp'][0]['date'] . "</p>";}?>
                         </div>
                 </div>
 

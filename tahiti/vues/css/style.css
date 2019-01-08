@@ -1,20 +1,52 @@
-/*
-Template Name: DASHGUM FREE - Bootstrap 3.2 Admin Theme
-Template Version: 1.0
-Author: Carlos Alvarez
-Website: http://blacktie.co
-Premium: http://www.gridgum.com
-*/
-
 /* Import fonts */
 
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,900);
+/*@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,900);*/
+
+/* Roboto regular */
+
+@font-face {
+    font-family: "Roboto";
+    src: url("./fonts/Roboto-Regular.eot");
+    src: url("./fonts/Roboto-Regular.eot?#iefix") format('embedded-opentype'),
+         url("./fonts/Roboto-Regular.woff2") format('woff2'),
+         url("./fonts/Roboto-Regular.woff") format('woff'),
+         url("./fonts/Roboto-Regular.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Roboto bold */
+
+@font-face {
+    font-family: "Roboto";
+    src: url('./fonts/Roboto-Bold.eot');
+    src: url('./fonts/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/Roboto-Bold.woff2') format('woff2'),
+         url('./fonts/Roboto-Bold.woff') format('woff'),
+         url('./fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Roboto black */
+
+@font-face {
+    font-family: "Roboto";
+    src: url('./fonts/Roboto-Black.eot');
+    src: url('./fonts/Roboto-Black.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/Roboto-Black.woff2') format('woff2'),
+         url('./fonts/Roboto-Black.woff') format('woff'),
+         url('./fonts/Roboto-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
 /* BASIC THEME CONFIGURATION */
 
 body {
     color: #797979;
     background: #f2f2f2;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', 'Times New Roman';
     padding: 0px !important;
     margin: 0px !important;
     font-size: 13px;
@@ -72,6 +104,15 @@ a, a:hover, a:focus {
     text-decoration: none;
 }
 
+a:hover, a:focus {
+    color : #3259A2 !important; 
+}
+
+h3{
+    color : #374f7b !important;
+}
+
+
 /*Theme Backgrounds*/
 
 .bg-theme {
@@ -94,14 +135,14 @@ a, a:hover, a:focus {
 
 .btn-theme {
     color: #fff;
-    background-color: #68dff0;
-    border-color: #48bcb4;
+    background-color: #5B7BB5;
+    border-color: #5B7BB5;
 }
 
 .btn-theme:hover, .btn-theme:focus, .btn-theme:active, .btn-theme.active, .open .dropdown-toggle.btn-theme {
     color: #fff;
-    background-color: #48bcb4;
-    border-color: #48bcb4;
+    background-color: #5B7BB5;
+    border-color: #5B7BB5;
 }
 
 .btn-theme02 {
@@ -206,10 +247,10 @@ ul.top-menu>li>.logout {
     font-size: 12px;
     border-radius: 4px;
     -webkit-border-radius: 4px;
-    border: 1px solid #64c3c2 !important;
+    border: 1px solid #5B7BB5 !important;
     padding: 5px 15px;
     margin-right: 15px;
-    background: #68dff0;
+    background: #8DA3CB;
     margin-top: 15px;
 }
 
@@ -219,7 +260,7 @@ ul.top-menu>li>.logout {
     width: 210px;
     height: 100%;
     position: fixed;
-    background: #424a5d;
+    background: #374f7b;
 }
 
 #sidebar h5 {
@@ -285,7 +326,6 @@ ul.sidebar-menu {
 }
 
 ul.sidebar-menu li ul.sub li {
-    background: #424a5d;
     margin-bottom: 0;
     margin-left: 0;
     margin-right: 0;
@@ -354,7 +394,7 @@ ul.sidebar-menu li a {
 }
 
 ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
-    background: #68dff0;
+    background: #8DA3CB;
     color: #fff;
     display: block;
     -webkit-transition: all 0.3s ease;
@@ -401,7 +441,7 @@ ul.sidebar-menu li a.active i {
 }
 
 .black-bg {
-    background: #353542;
+    background: #374f7b;
     border-bottom: 1px solid #808080;
 }
 
@@ -736,7 +776,7 @@ ul.top-menu>li>a:hover, ul.top-menu>li>a:focus {
     cursor: pointer;
     display: inline-block;
     font-size: 20px;
-    color: #424a5d;
+    color: #8DA3CB;
 }
 
 .sidebar-closed>#sidebar>ul {
@@ -770,7 +810,7 @@ ul.top-menu>li>a:hover, ul.top-menu>li>a:focus {
     line-height: 40px;
     height: 40px;
     margin: 0;
-    background: #ff865c;
+    background: #ffd633;
     text-align: center;
 }
 
@@ -811,10 +851,6 @@ ul.top-menu>li>a:hover, ul.top-menu>li>a:focus {
     text-transform: uppercase;
     font-style: italic;
     color: #666666
-}
-
-.ds a {
-    color: #68dff0;
 }
 
 /* LINE ICONS CONFIGURATION */
@@ -1019,7 +1055,7 @@ PANELS CONFIGURATIONS
 
 .darkblue-panel {
     text-align: center;
-    background: #444c57;
+    background: #374f7b;
 }
 
 .darkblue-panel .darkblue-header {
@@ -1048,33 +1084,6 @@ PANELS CONFIGURATIONS
     font-weight: 700;
 }
 
-/*Green Panel*/
-
-.green-panel {
-    text-align: center;
-    background: #68dff0;
-}
-
-.green-panel .green-header {
-    background: #43b1a9;
-    padding: 3px;
-    margin-bottom: 15px;
-}
-
-.green-panel h5 {
-    color: white;
-    font-weight: 200;
-    margin-top: 10px;
-}
-
-.green-panel h3 {
-    color: white;
-    font-weight: 100;
-}
-
-.green-panel p {
-    color: white;
-}
 
 /*White Panel */
 
@@ -2065,7 +2074,7 @@ textarea {
     margin: 0;
     padding: 25px 20px;
     text-align: center;
-    background: #68dff0;
+    background: #5B7BB5;
     border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
     color: #fff;
@@ -2345,7 +2354,7 @@ textarea {
 /*footer*/
 
 .site-footer {
-    background: #68dff0;
+    background: #8DA3CB;
     color: #fff;
     padding: 10px 0;
 }

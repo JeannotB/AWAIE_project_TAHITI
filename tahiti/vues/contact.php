@@ -8,7 +8,7 @@
         <div class="col-lg-12">
             <div class="form-panel">
                 <h4 class="mb"><i class="fa fa-angle-right"></i> Help form</h4>
-                <form id="contact-form" class="form-horizontal style-form" method="POST" action='testmail.php'>
+                <form id="contact-form" class="form-horizontal style-form" method="POST" action='#' onsubmit="return fieldtest()">
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Name</label>
                         <div class="col-sm-10">
@@ -95,8 +95,8 @@
 			var form = document.getElementById("contact-form");
 			var testOK = true;
 
-            testOK &= verif(form.name);
-            testOK &= verif(form.phone);
+			testOK &= verif(form.name);
+			testOK &= verif(form.phone);
 			testOK &= verif(form.email);
 			testOK &= verif(form.subject);
 			testOK &= verif(form.content);

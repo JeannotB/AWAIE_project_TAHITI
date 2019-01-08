@@ -26,14 +26,12 @@
 
 
         <!-- JavaScript -->
-        <script src="js/jquery.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
-        <script src="js/jquery.ui.touch-punch.min.js"></script>
-        <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
-        <script src="js/jquery.scrollTo.min.js"></script>
-        <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-        <script src="js/common-scripts.js"></script>
+        <script src="./js/jquery.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/jquery-ui-1.9.2.custom.min.js"></script>
+        <script src="./js/jquery.ui.touch-punch.min.js"></script>
+        <script class="include" type="text/javascript" src="./js/jquery.dcjqaccordion.2.7.js"></script>
+        <script src="./js/jquery.nicescroll.js" type="text/javascript"></script>
         
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -183,16 +181,9 @@
         <!--footer end-->
     </section>
     
-    <script src="./js/jquery.js"></script>
-    <script src="./js/common-scripts.js"></script>
-    <script>
-        //custom select box
-        
-        $(function(){
-               $('select.styled').customSelect(); 
-        });
-    
-    </script>
+    <!-- JavaScript -->
+        <script src="./js/jquery.scrollTo.min.js"></script>
+        <script src="./js/common-scripts.js"></script>
     
     </body>
 </html>

@@ -14,7 +14,7 @@
 
         <?php
             
-                echo "<a href='dashboard.php?id_company=".password_hash($data[$j]['company_id'], PASSWORD_BCRYPT)."'><h3 style='margin-left:15px;'>" . $data[$j]['Nom'] . "</h3></a>";
+                echo "<h3 style='margin-left:15px;'><a href='dashboard.php?id_company=".password_hash($data[$j]['company_id'], PASSWORD_BCRYPT)."'>" . $data[$j]['Nom'] . "</a></h3>";
                 //loop display graph of all company's sensors
                 for ($i = 0; $i < count($data[$j]['produit']); $i++) {
                     $produit = $data[$j]['produit'][$i];
@@ -33,7 +33,7 @@
                     <i class="fa fa-thermometer-half"></i>
                     <?php if (isset($produit['temp'][0]['temperature'])) {echo "<h1>" . $produit['temp'][0]['temperature'] . " °C</h1>";}?>
                         <div class="row">
-                            <?php echo "<h3 class='centered'>" . $produit['ref_produit'] . "</h3>"; ?><?php if (isset($produit['temp'][0]['date'])) {echo "<p class='centered'>" . $produit['temp'][0]['date'] . "</p>";}?>
+                            <?php echo "<h4 class='centered'>" . $produit['ref_produit'] . "</h3>"; ?><?php if (isset($produit['temp'][0]['date'])) {echo "<p class='centered'>" . $produit['temp'][0]['date'] . "</p>";}?>
                         </div>
                 </div>
 
@@ -43,7 +43,7 @@
                             var t =                                                                       <?php echo json_encode($temp); ?>;
                                 t = t.reverse();
                         </script>
-                        <div id=<?php echo $produit['ref_produit'] . "graph"; ?> class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4">
+                        <div id="<?php echo $produit['ref_produit'] . 'graph'; ?>" class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4">
                         </div>
                         <script>
                             document.getElementById("<?php echo $produit['ref_produit'] . 'graph'; ?>").setAttribute("data-data", "[" + t + "]");

@@ -2,6 +2,8 @@ Options +FollowSymlinks
 
 RewriteEngine on
 
+AddType font/ttf .ttf
+
 #------------------VUES-------------------------------------------
 RewriteRule ^$ ./vues/index.php [L]
 
