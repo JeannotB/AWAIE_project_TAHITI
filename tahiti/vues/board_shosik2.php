@@ -19,7 +19,7 @@
 	<div class="container">
 		<h2 class="text-center top-space">Stéphane Ho Sik Chuen</h2>
 		<h3 class="text-center top-space">开发人员</h3>
-        <a href="./board_shosik"><img src="assets/img/shosik.jpg" alt="Stéphane Ho Sik Chuen" title="Stéphane Ho Sik Chuen" class="float_img" /></a> <br>
+        <a href="./board_shosik"><img src="./img/shosik.jpg" alt="Stéphane Ho Sik Chuen" title="Stéphane Ho Sik Chuen" class="float_img" /></a> <br>
 		<p class="text-muted">
 			<h2>大学课程</h2><br>
 			- 图尔大学硕士2大数据管理与分析[图尔（41）]<br>

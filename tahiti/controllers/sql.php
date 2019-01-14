@@ -34,7 +34,7 @@ function get_members($token = 'default')
 
     $data = null;
 
-    if ($id === 'default') {
+    if ($token === 'default') {
         $sql_request = "SELECT * FROM members";
     } else {
         $sql_request = "SELECT * FROM members WHERE token = '" . $token . "'";
@@ -120,6 +120,27 @@ function get_all_news($id = 'default')
 
     return $data;
 }
+
+function get_all_offer($id = 'default')
+{
+    require '../models/db_connection.php';
+
+    $data = null;
+
+    if ($id === 'default') {
+        $sql_request = "SELECT * FROM recruit";
+    } else {
+        $sql_request = "SELECT * FROM recruit WHERE offer_id = '" . $id . "'";
+    }
+
+    $result = mysqli_query($sqlconnect, $sql_request);
+    while ($row = mysqli_fetch_assoc($result)) {
+        $data[] = $row;
+    }
+
+    return $data;
+}
+
 
 function get_news_front_page($limit = INF)
 {
@@ -434,16 +455,55 @@ function insert_news($data)
     return $error;
 }
 
+function insert_offer($data)
+{
+    require '../models/db_connection.php';
+
+    $sql_request = "INSERT INTO recruit (author_id, title, is_online, description, type ,localisation, date_takeout)
+                VALUES ('" . $data['author_id'] . "','" . $data['title'] . "','" . $data['online'] . "','". $data['description'] . "','". $data['type'] . "','". $data['localisation'] . "','" . $data['date_takeout'] . "')";
+
+    if (mysqli_query($sqlconnect, $sql_request)) {
+        $error = "Offer successfully post";
+    } else {
+        $error = "Error: " . $sql . "" . mysqli_error($sqlconnect);
+    }
+
+    return $error;
+}
+
 function update_member($data, $token)
 {
     require '../models/db_connection.php';
 
     $sql_request = "UPDATE members SET name = '".$data['name']."',
-                                       email = '".$data['email']."'
-                                   WHERE token = $token";
-    
+                                       email = '".$data['email']."',
+                                       password = '".$data['password']."'
+                                   WHERE token = '".$token."'";
     if (mysqli_query($sqlconnect, $sql_request)) {
         $error = "News Update";
+    } else {
+        $error = "Error: " . $sql_update_news . " " . mysqli_error($sqlconnect);
+    }
+
+    return $error;
+}
+
+function update_offer($data, $id)
+{
+    require '../models/db_connection.php';
+
+    $sql_request = "UPDATE recruit SET title = '" . $data['title'] . "',
+                                    author_id = '". $data['author_id'] ."',
+                                    description = '" . $data['description'] . "',
+                                    is_online = '" . $data['online'] . "',
+                                    date_offer = '" . $data['date'] . "',
+                                    type = '" . $data['type'] . "',
+                                    localisation = '" . $data['localisation'] . "',
+                                    date_takeout = '" . $data['date_takeout'] . "'
+                                    WHERE offer_id = '" . $id . "'";
+    
+    if (mysqli_query($sqlconnect, $sql_request)) {
+        $error = "Offer Update";
     } else {
         $error = "Error: " . $sql_update_news . " " . mysqli_error($sqlconnect);
     }

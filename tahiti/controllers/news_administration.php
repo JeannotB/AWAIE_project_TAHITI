@@ -6,8 +6,8 @@
     if (isset($_POST['submit'])) {
         $news = [
             'id' => $_POST['news_id'],
-            'title' => $_POST['news_title'],
-            'description' => $_POST['news_description'],
+            'title' => str_replace(',', '', str_replace("'", "", $_POST['news_title'])),
+            'description' => str_replace(',', '', str_replace("'", "", $_POST['news_description'])),
             'online' => (isset($_POST['news_online']) ? 1 : 0), //Value : ON (true) / NULL (false)
             'date' => $today = date("Y-m-d H:i:s"),
         ];

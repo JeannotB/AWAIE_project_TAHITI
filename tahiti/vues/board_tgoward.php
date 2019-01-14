@@ -19,7 +19,7 @@
 	<div class="container">
 		<h2 class="text-center top-space">Thomas Goward</h2>
 		<h3 class="text-center top-space">Développeur</h3>
-		<img src="assets/img/tgoward.jpg" alt="Thomas Goward" title="Thomas Goward" class="float_img" /> <br>
+		<img src="./img/tgoward.jpg" alt="Thomas Goward" title="Thomas Goward" class="float_img" /> <br>
 		<p class="text-muted">
 			<h2>Cursus universitaire</h2><br>
 			- Elève ingénieur de l'INSA Centre Val de Loire [Blois (41)].<br>

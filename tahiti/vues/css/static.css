@@ -1,7 +1,7 @@
 /* Header */
 
 #head {
-	background: #181015 url(../img/automate2.png) no-repeat;
+	background: #181015 url(../../img/automate2.png) no-repeat;
 	background-size: cover;
 	min-height: 520px;
 	text-align: center;
@@ -39,10 +39,10 @@
 #head .btn-default {
 	text-shadow: none;
 	background: transparent;
-	color: rgba(255, 255, 255, .5);
-	-webkit-box-shadow: inset 0px 0px 0px 3px rgba(255, 255, 255, .5);
-	-moz-box-shadow: inset 0px 0px 0px 3px rgba(255, 255, 255, .5);
-	box-shadow: inset 0px 0px 0px 3px rgba(255, 255, 255, .5);
+	color: #8DA3CB;
+	-webkit-box-shadow: inset 0px 0px 0px 3px #8DA3CB;
+	-moz-box-shadow: inset 0px 0px 0px 3px #8DA3CB;
+	box-shadow: inset 0px 0px 0px 3px #8DA3CB;
 	background: transparent;
 }
 

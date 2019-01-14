@@ -19,7 +19,7 @@
 	<div class="container">
 		<h2 class="text-center top-space">Stéphane Ho Sik Chuen</h2>
 		<h3 class="text-center top-space">Développeur</h3>
-		<a href="./board_shosik2"><img src="assets/img/shosik.jpg" alt="Stéphane Ho Sik Chuen" title="Stéphane Ho Sik Chuen" class="float_img" /></a> <br>
+		<a href="./board_shosik2"><img src="./img/shosik.jpg" alt="Stéphane Ho Sik Chuen" title="Stéphane Ho Sik Chuen" class="float_img" /></a> <br>
 		<p class="text-muted">
 			<h2>Cursus universitaire</h2><br>
 			- Master 2 Big Data Management and Analytics à l'Université de Tours [Tours (41)]<br>

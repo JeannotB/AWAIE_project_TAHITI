@@ -19,7 +19,7 @@
 	<div class="container">
 		<h2 class="text-center top-space">Baptiste Chevallier</h2>
 		<h3 class="text-center top-space">Développeur pilote</h3>
-		<img src="assets/img/bchevallier.jpg" alt="Baptiste Chevallier" title="Baptiste Chevallier" class="float_img" /> <br>
+		<img src="./img/bchevallier.jpg" alt="Baptiste Chevallier" title="Baptiste Chevallier" class="float_img" /> <br>
 		<p class="text-muted">
 			<h2>Cursus universitaire</h2><br>
 			- Elève ingénieur de l'INSA Centre Val de Loire [Blois (41)].<br>

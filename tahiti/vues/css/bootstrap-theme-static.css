@@ -6,7 +6,7 @@
 
 .navbar-inverse {
 	border-radius: 0;
-	background: rgba(55,79,123,0.9);
+	background: rgba(55, 79, 123, 0.9);
 	border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 	min-height: 100px;
 	padding-top: 25px;
@@ -19,7 +19,7 @@
 
 @media (max-width: 767px) {
 	.navbar-inverse {
-		background: rgba(55,79,123,0.8);
+		background: rgba(55, 79, 123, 0.8);
 	}
 }
 
@@ -92,6 +92,9 @@
 	margin-top: 5px;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	color : #ffd633 !important;
+	border-color: #ffd633 !important;
+
 }
 
 .navbar-nav a.btn:focus, .navbar-nav a.btn:hover {
@@ -137,6 +140,8 @@
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
+	color : #ffd633;
+	border-color: #ffd633;
 }
 
 .btn-lg {
@@ -172,8 +177,8 @@
 
 .btn-action, .btn-primary {
 	color: #FFEFD7;
-	background-image: -webkit-linear-gradient(top, #FF9B22 0%, #FF8C00 100%);
-	background-image: linear-gradient(to bottom, #FF9B22 0%, #FF8C00 100%);
+	background-image: -webkit-linear-gradient(top, #ffd633 0%, #FF8C00 100%);
+	background-image: linear-gradient(to bottom, #ffd633 0%, #FF8C00 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffFF9B22', endColorstr='#ffFF8C00', GradientType=0);
 	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 	background-repeat: repeat-x;
@@ -254,34 +259,34 @@
 	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
 	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  }
+}
 
-  .form-control:focus {
+.form-control:focus {
 	border-color: #66afe9;
 	outline: 0;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
-  }
+}
 
-  .form-control::-moz-placeholder {
+.form-control::-moz-placeholder {
 	color: #777;
 	opacity: 1;
-  }
+}
 
-  .form-control:-ms-input-placeholder {
+.form-control:-ms-input-placeholder {
 	color: #777;
-  }
+}
 
-  .form-control::-webkit-input-placeholder {
+.form-control::-webkit-input-placeholder {
 	color: #777;
-  }
+}
 
-  .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
 	cursor: not-allowed;
 	background-color: #eee;
 	opacity: 1;
-  }
+}
 
-  textarea.form-control {
+textarea.form-control {
 	height: auto;
-  }
+}

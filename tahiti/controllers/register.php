@@ -111,7 +111,7 @@
                 {
                     $error = "Successfully register";
                     
-                    header('Location: dashboard.php');
+                    header('Location: ./vues/dashboard.php');
                 }
 				else
 					$error = "Error: " . $sql . "" . mysqli_error($sqlconnect);

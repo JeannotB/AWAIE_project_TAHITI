@@ -32,7 +32,7 @@
 					echo '...';
 				}
 			?> <br>
-			<a href="news.php">Lire l'actualité</a>.
+			<a href="./news">Lire l'actualité</a>.
 		</p>
 	</div>
 	<!-- /News -->
@@ -51,7 +51,7 @@
 			C'est ainsi qu'est créé TAHITI (Transfert Automate Html Intégration et Traitement de l'Information). Nous nous voulons
 			résolument modernes dans les solutions que l'on peut apporter à chaque client, s'adapter à ses demandes et à ses capteurs.<br><br>
 
-			Pour en savoir plus sur nos fondateurs, cliquez <a href="board.html">ici</a>.
+			Pour en savoir plus sur nos fondateurs, cliquez <a href="./board">ici</a>.
 		</p>
 	</div>
 	<!-- /About-->
@@ -88,7 +88,7 @@
 						<input type="text" name="subject" class="form-control" placeholder="Sujet du mail" tabindex="3" onblur="verif(this)"><br>
 					<label>Votre message (obligatoire)</label>
 						<textarea name="content" class="form-control" rows="5" placeholder="Votre message" tabindex="4" onblur="verif(this)"></textarea><br>
-					<button class="btn btn-action btn-lg" type="submit" name="contact_submit" tabindex="5"><i class="fa fa-envelope"></i> Envoyer</button>
+					<button class="btn btn-action btn-lg" type="submit" name="contact_submit" tabindex="5"><i class="fa fa-envelope" style="color:white"></i> Envoyer</button>
 				</form>
 			</div>
 		</div> <!-- /row -->
