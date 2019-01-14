@@ -12,7 +12,7 @@
 <div class="col-lg-4 ds">
     <h3>Entreprise</h3>
     <div class="desc" style="height: inherit;">
-        <table class="table table-hover">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Entreprise</th>
@@ -37,7 +37,7 @@
 <div class="col-lg-offset-2 col-lg-4 ds">
     <h3>Members</h3>
     <div class="desc" style="height: inherit;">
-        <table class="table table-hover">
+        <table class="table ">
             <thead>
                 <tr>
                     <th>Client</th>
@@ -60,9 +60,8 @@
     </div>
 </div><!-- /col-lg-3 -->
 
-
-<a class="fc-button"></a>
-
+<div>
+    <button class="button">Hello World</button>
 </div>
 <!--/row -->
 <script src="./js/jquery.sparkline.js"></script>
