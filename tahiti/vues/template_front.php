@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
-	
+
 
 	<title><?php echo $title; ?></title>
 
@@ -20,7 +20,7 @@
 	<link rel="stylesheet" href="./vues/css/bootstrap-theme-static.css" media="screen">
 	<link href="./vues/css/static.css" rel="stylesheet">
 
-	
+
 
 </head>
 
@@ -32,7 +32,7 @@
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span>
 					<span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-				<a class="navbar-brand" href="./"><img src="./img/icon.png" style="max-height: 75px;" alt="TAHITI" /></a>
+				<a class="navbar-brand" href="./"><img src="./img/icon.png" style="max-height: 100px;" alt="TAHITI" /></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
@@ -68,10 +68,10 @@
 						<div class="widget-body">
 							<p><a href="mailto:contact.sup.tahiti@gmail.com">contact.sup.tahiti@gmail.com</a><br>
 								<br>
-								TAHITI<br> 
-								INSA Centre Val de Loire<br> 
-								3 rue de la Chocolaterie<br> 
-								41000 Blois<br> 
+								TAHITI<br>
+								INSA Centre Val de Loire<br>
+								3 rue de la Chocolaterie<br>
+								41000 Blois<br>
 								FRANCE
 							</p>
 						</div>
@@ -93,7 +93,7 @@
 						<h3 class="widget-title">Respect de la vie privée</h3>
 						<div class="widget-body">
 							<p>En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies susceptibles de réaliser des
-								statistiques de visites ou de permettre de vous proposer des services, y compris de partenaires tiers, adaptés 
+								statistiques de visites ou de permettre de vous proposer des services, y compris de partenaires tiers, adaptés
 								à vos centre d'intérêt. <br>
 							 Pour éviter cela, vous pouvez modifier le paramétrage de votre navigateur.							</p>
 						</div>
