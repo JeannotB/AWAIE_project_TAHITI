@@ -18,25 +18,25 @@
 	<!-- Thomas -->
 	<div class="container">
 		<h2 class="text-center top-space">Thomas Goward</h2>
-		<h3 class="text-center top-space">Développeur</h3>
-		<a href="./board_tgoward2"><img src="./img/tgoward.jpg" alt="Thomas Goward" title="Thomas Goward" class="float_img" /></a><br>
+		<h3 class="text-center top-space">Developer</h3>
+		<a href="./board_tgoward"><img src="./img/tgoward.jpg" alt="Thomas Goward" title="Thomas Goward" class="float_img" /></a><br>
 		<p class="text-muted">
-			<h2>Cursus universitaire</h2><br>
-			- Elève ingénieur de l'INSA Centre Val de Loire [Blois (41)].<br>
-      - Master Big Data Managment and Analysis à l'Université de Tours [Tours (37)].<br>
-			- Semestre à l'Univerisité du Québec à Chicoutimi [Sagunay, Canada].<br>
+			<h2>University cursus</h2><br>
+			- Student enginneer at INSA Centre Val de Loire [Blois (41)].<br>
+      - Master student in Big Data Managment and Analytics at Tours University.<br>
+			- Semester at the Univerisité du Québec à Chicoutimi [Sagunay, Canada].<br>
 			<br>
-			<h2>Centres d'intérêt</h2><br>
-			- Programmation<br>
+			<h2>Hobbies</h2><br>
+			- Programming<br>
 			- Data science<br>
-			- Tir à l'arc<br>
-			- Simulateur de course<br>
-			- Photographie<br>
+			- Archery<br>
+			- Sim racing and gaming<br>
+			- Photography<br>
 			<br>
-			<h2>Projets and expériences</h2><br>
-      - Conception d'un drone entièrement actionné<br>
-			- Vainqueur d'un start-up weekend<br>
-			- Etudiant entrepreneur<br>
+			<h2>Projects and experience</h2><br>
+      - Designing and building a fully accutuated mini-drone prototype<br>
+			- Participated in a start-up weekend<br>
+			- Student entrepreneur<br>
 			<br>
 		</p>
 		<h2><a href="https://www.linkedin.com/in/thomas-goward-456345a9/"><i class="fa fa-linkedin"></i></a></h2>
