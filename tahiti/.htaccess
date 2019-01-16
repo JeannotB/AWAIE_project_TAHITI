@@ -1,0 +1,26 @@
+Options +FollowSymlinks
+
+RewriteEngine on
+
+AddType font/ttf .ttf
+
+#------------------VUES-------------------------------------------
+RewriteRule ^$ ./vues/index.php [L]
+
+RewriteRule ^login$ ./vues/login.php [L]
+RewriteRule ^register$ ./vues/register.php [L]
+
+RewriteRule ^contact$ ./vues/contact.php [L]
+
+RewriteRule ^news$ ./vues/news.php [L]
+RewriteRule ^news-([0-9]+)$   ./vues/news.php?id_news=$1 [L]
+
+RewriteRule ^board$ ./vues/board.php [L]
+RewriteRule ^board_([a-z]*)([0-9]*)$ ./vues/board_$1$2.php [L]
+
+RewriteRule ^recruit$ ./vues/recruit.php [L]
+RewriteRule ^recruit-([0-9]+)$ ./vues/recruit.php?id_job=$1 [L]
+
+RewriteRule ^job-([0-9]+)$   ./vues/jobs.php?id_job=$1 [L]
+RewriteRule ^candidate-([0-9]+)$   ./vues/canditate.php?id_job=$1 [L]
+
